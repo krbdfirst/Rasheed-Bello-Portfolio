@@ -1,0 +1,58 @@
+body {
+    background-color: black;
+    color: white;
+    height: 100vh;
+    display: flex;
+
+    @font-face {
+        font-family: JekoBlack;
+        src: url(Fonts/Jeko-Black.ttf);
+    }
+
+    @font-face {
+        font-family: PoppinsReg;
+        src: url(Fonts/Poppins-Regular.otf);
+    }
+
+    font-family:PoppinsReg;
+
+    .container {
+        width: min(1200px, 90vw);
+        margin: 0 auto;
+
+        nav {
+
+            box-sizing: border-box;
+            background: linear-gradient(90.59deg, rgba(235, 235, 235, 0.17) 0%, rgba(255, 255, 255, 0.095) 100%);
+            border-radius: 16px;
+            display: flex;
+            border: 1px solid rgb(64, 64, 64);
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            margin-top: 15px;
+
+            .logo {
+                width: 100px;
+            }
+
+            .menu {
+                width: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                img {
+                    width: 25px;
+                }
+
+                ul {
+                    list-style: none;
+                    display: flex;
+                    width: 100%;
+                    justify-content: space-between;
+                }
+            }
+        }
+    }
+}
