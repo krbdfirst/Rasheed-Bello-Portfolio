@@ -29,7 +29,7 @@
                 border: 1px solid rgb(64, 64, 64);
                 justify-content: space-between;
                 align-items: center;
-                padding: 0 40px;
+                padding: 0 min(40px, 8vw);
                 margin-top: 15px;
                 height: 60px;
 
