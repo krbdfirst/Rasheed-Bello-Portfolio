@@ -34,27 +34,55 @@
                 height: 60px;
 
                 .logo {
-                    width: 100px;
+                    width: 90px;
                 }
 
                 .menu {
-                    width: 50%;
+                    width: auto;
+                    min-width: 50%;
                     display: flex;
-                    justify-content: space-between;
+                    gap: 25px;
+                    align-items: center;
 
-                    img {
-                        width: 25px;
+                    .mode {
+                        width: 20px;
+                        height: 20px;
+                    }
+
+                    .mob-menu {
+                        width: 20px;
                     }
 
                     ul {
-                        line-height: 24px;
-                        height: 24px;
+                        line-height: 20px;
+                        height: 20px;
                         list-style: none;
-                        display: flex;
                         width: 100%;
+                        gap: 20px;
                         justify-content: space-between;
+                        color: rgb(164, 164, 164);
                     }
                 }
+            }
+        }
+
+        @media screen and (max-width: 700px) {
+            .desktop-menu {
+                display: none;
+            }
+
+            .menu {
+                justify-content: end;
+            }
+        }
+
+        @media screen and (min-width: 700px) {
+            .mob-menu {
+                display: none;
+            }
+
+            .desktop-menu {
+                display: flex;
             }
         }
     }

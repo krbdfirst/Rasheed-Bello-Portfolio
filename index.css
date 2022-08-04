@@ -31,21 +31,44 @@ body .container nav {
   height: 60px;
 }
 body .container nav .logo {
-  width: 100px;
+  width: 90px;
 }
 body .container nav .menu {
-  width: 50%;
+  width: auto;
+  min-width: 50%;
   display: flex;
-  justify-content: space-between;
+  gap: 25px;
+  align-items: center;
 }
-body .container nav .menu img {
-  width: 25px;
+body .container nav .menu .mode {
+  width: 20px;
+  height: 20px;
+}
+body .container nav .menu .mob-menu {
+  width: 20px;
 }
 body .container nav .menu ul {
-  line-height: 24px;
-  height: 24px;
+  line-height: 20px;
+  height: 20px;
   list-style: none;
-  display: flex;
   width: 100%;
+  gap: 20px;
   justify-content: space-between;
+  color: rgb(164, 164, 164);
+}
+@media screen and (max-width: 700px) {
+  body .desktop-menu {
+    display: none;
+  }
+  body .menu {
+    justify-content: end;
+  }
+}
+@media screen and (min-width: 700px) {
+  body .mob-menu {
+    display: none;
+  }
+  body .desktop-menu {
+    display: flex;
+  }
 }/*# sourceMappingURL=index.css.map */
