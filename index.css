@@ -1,21 +1,18 @@
+@font-face {
+  font-family: JekoBlack;
+  src: url(Fonts/Jeko-Black.ttf);
+}
+@font-face {
+  font-family: PoppinsLit;
+  src: url(Fonts/Poppins-Light.otf);
+}
 body {
   background-color: black;
   color: white;
   height: 100vh;
   display: flex;
-  font-family: PoppinsReg;
-}
-@font-face {
-  body {
-    font-family: JekoBlack;
-    src: url(Fonts/Jeko-Black.ttf);
-  }
-}
-@font-face {
-  body {
-    font-family: PoppinsReg;
-    src: url(Fonts/Poppins-Regular.otf);
-  }
+  font-family: PoppinsLit;
+  font-size: 14px;
 }
 body .container {
   width: min(1200px, 90vw);
@@ -31,6 +28,7 @@ body .container nav {
   align-items: center;
   padding: 0 40px;
   margin-top: 15px;
+  height: 60px;
 }
 body .container nav .logo {
   width: 100px;
@@ -38,13 +36,14 @@ body .container nav .logo {
 body .container nav .menu {
   width: 50%;
   display: flex;
-  align-items: center;
   justify-content: space-between;
 }
 body .container nav .menu img {
   width: 25px;
 }
 body .container nav .menu ul {
+  line-height: 24px;
+  height: 24px;
   list-style: none;
   display: flex;
   width: 100%;
