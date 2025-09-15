@@ -1,57 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
-    <title>Rasheed Bello - Creative Designer and Web developer</title>
+  <meta charset="UTF-8">
+  <title>Rasheed Bello - Infrastructure Engineer, Researcher, and Serial Tech Entreprenuer</title>
+  <link rel="stylesheet" href="index.css">
+  <script defer src="index.js"></script>
 </head>
-
 <body>
-    <div class="container">
-        <nav>
-            <img class="logo" src="images/mylogo.png" alt="">
-            <div class="menu">
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="images/mylogo.png" alt="Logo">
+    </div>
+    <ul class="nav-links desktop-only">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li>
+        <a href="cv.pdf" class="download">
+          Download CV <img src="images/icons/download.svg" alt="Download">
+        </a>
+      </li>
+    </ul>
 
-                <ul class="desktop-menu">
-                    <li>Home</li>
-                    <li>About Me</li>
-                    <li>My Portfolio</li>
-                    <li>Contact me</li>
-                </ul>
+    <!-- Mobile Nav -->
+    <div class="mobile-nav mobile-only">
+      <a href="cv.pdf" class="download">
+        <img src="images/icons/download.svg" alt="Download"> CV
+      </a>
+      <button class="hamburger">
+        <img src="images/icons/menu.svg" alt="Menu">
+      </button>
+    </div>
+  </nav>
 
-                <img class="mob-menu" src="images/menu.png" alt="">
-                <img class="mode" src="images/Sun.png" alt="">
-            </div>
-        </nav>
-        <header>
-            <div class="content">
-                <div class="greeting">Hi 👋🏽, I am</div>
-                <div class="name">
-                    <h1>Rasheed Bello (KRB)</h1>
-                </div>
-                <div class="decr">
-                    <p>I am a Creative Designer, Frontend Developer
-                        and Business Consultant</p>
-                </div>
-                <div class="socials">
-                    <ul>
-                        <li><img src="images/github.svg" alt=""></li>
-                        <li><img src="images/behance.svg" alt=""></li>
-                        <li><img src="images/twitter.svg" alt=""></li>
-                        <li><img src="images/Instagram.svg" alt=""></li>
-                    </ul>
-                </div>
-            </div>
-            <img class="big-img" src="images/my-pic.png" alt="">
-        </header>
+  <!-- Mobile Dropdown -->
+  <div class="mobile-menu">
+    <button class="close-btn">
+      <img src="images/icons/close.svg" alt="Close">
+    </button>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
 
+  <!-- SECTIONS -->
+  <main class="container">
+    <section id="home" class="section hero">
+    <div class="hero-content">
+        <div class="hero-text">
+        <p class="intro">Hi 👋🏽, I am</p>
+        <h1 class="name">Rasheed Bello <span>(KRB)</span></h1>
+        <p class="roles">
+            > Grad. Infrastructure Engr &amp; Consultant @Arup<br/>
+            > Researcher in Transportation &amp; Urban Resilience<br/>
+            > Serial Tech Entrepreneur
+        </p>
+
+        <div class="hero-links">
+            <a href="https://github.com/" target="_blank">
+            <img src="images/icons/github.svg" alt="GitHub"/>
+            </a>
+            <a href="https://scholar.google.com/" target="_blank">
+            <img src="images/icons/scholar.svg" alt="Scholar"/>
+            </a>
+            <a href="https://linkedin.com/" target="_blank">
+            <img src="images/icons/linkedin.svg" alt="LinkedIn"/>
+            </a>
+
+            <a href="cv.pdf" class="download">
+            Download CV 
+            <img src="images/icons/download.svg" alt="Download"/>
+            </a>
+        </div>
+        </div>
+
+        <div class="hero-image">
+        <img src="images/my pic b_w 1.png" alt="Rasheed Bello"/>
+        </div>
+    </div>
+    </section>
+<section id="about" class="section about">
+  <div class="about-content">
+    <!-- Left: Images -->
+    <div class="about-images">
+      <div class="img-wrapper portrait">
+        <img src="images/PersornalPortrait.jpg" alt="Portrait of Rasheed Bello"/>
+      </div>
+      <div class="img-wrapper workshop">
+        <img src="images/PicAtWorkshop.jpg" alt="At Workshop"/>
+      </div>
     </div>
 
+    <!-- Right: Text -->
+    <div class="about-text">
+      <h2>Fueled by a Passion for Thriving Cities and Communities</h2>
+      <p>
+        After spending what feels like a quarter of my life in Lagos traffic, I developed a strong conviction to create solutions that transform mobility. I believe we can do more than just survive city life—we can design systems that connect communities, accelerate trade, and expand opportunities.
+      </p>
+      <p>
+        I’m especially passionate about how Machine Learning (ML) and Geospatial Data Science can reveal the deep interconnections between social, economic, and environmental factors in infrastructure planning and development.
+      </p>
+      <p>
+        I’m always open to research collaborations and project partnerships around:
+      </p>
+      <ul>
+        <li>Urban Mobility &amp; Transport Econometrics</li>
+        <li>Climate Mitigation &amp; Adaptation</li>
+        <li>Infrastructure Policy &amp; Economics</li>
+        <li>Digital Twin Models for City Resilience</li>
+        <li>Tech Solutions for Supply Chain/Transport Management</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="education-training" class="section edu-train"> 
+  <div class="content">
+    <h2 class="section-heading">
+      True Learning begins when curiosity takes the lead
+    </h2>
+
+    <div class="edu-train-grid">
+      <!-- Education -->
+      <div class="education">
+        <h3>Education</h3>
+
+        <div class="edu-item">
+          <h4>BEng. in Civil Engineering</h4>
+          <p class="institution">
+            <a href="https://www.oouagoiwoye.edu.ng/" target="_blank">
+              Olabisi Onabanjo University, Ogun, Nigeria
+            </a>
+            <span class="date">Oct. 2016 – Jan. 2022</span>
+          </p>
+          <p class="grade">
+            First Class Honours. 4.53/5.00 CGPA (Best Graduating Student in Transportation Research).
+          </p>
+          <p class="project">
+            BEng Thesis: Assessing Traffic Congestion on Ikorodu Road, Lagos, Nigeria.
+          </p>
+        </div>
+
+        <div class="edu-item">
+          <h4>
+            Professional Diploma in Project, Quality, Health, Safety, Environment, and Risk Management
+          </h4>
+          <p class="institution">
+            <a href="https://qhsesleadershipacademy.com/" target="_blank">QHSES Academy</a>
+            <span class="date">Nov. 2023 – July 2024</span>
+          </p>
+          <p class="grade"><em>Graduated Top 10%</em></p>
+          <p class="project">
+            Project: Investigative Analysis of Mont Blanc Tunnel Fire
+            <a href="https://drive.google.com/file/d/1cUIiHkigXfj_pLCL6xi-_3CkNoowRXii/view?usp=drive_link" target="_blank">[Slides]</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Trainings -->
+      <div class="trainings">
+        <h3>Trainings</h3>
+        <ul>
+          <li><strong>Intro to Traffic Flow Modeling and Intelligent Transport Systems</strong> – École Polytechnique <span class="date">Ongoing</span></li>
+          <li><strong>DeepTech Ready Fellowship (Geospatial Data Science)</strong> – NITDA × 3MTT <span class="date">Mar. 2025 – Present</span></li>
+          <li><strong>Welcome to Game Theory</strong> – University of Tokyo <span class="date">Mar. 2025</span></li>
+          <li><strong>Writing in the Sciences</strong> – Coursera × Stanford University (with honours) <span class="date">Oct. 2024</span></li>
+          <li><strong>Climate Finance, Negotiation and Policy</strong> – World Resources Institute × GreenHubAfrica <span class="date">Aug. 2023</span></li>
+          <li><strong>McKinsey’s Forward Program</strong> <a href="#">[Cert.]</a> – McKinsey & Co <span class="date">Jun. 2023 – Nov. 2023</span></li>
+          <li><strong>Climate Law and Governance Specialization Course*</strong> (Online Course During COP28) <span class="date">Nov. 2023</span></li>
+          <li><strong>Recycle-Up Nigeria 2023 Innovator</strong> – AIIDEV × SDSN Youth Nigeria <span class="date">Sept. 2023 – Nov. 2023</span></li>
+          <li><strong>Global Diversity Framework, Sustainable Development and The Law*</strong> <span class="date">Oct. 2023</span></li>
+          <li><strong>Paris Agreement, Sustainable Development, and The Law*</strong> <a href="#">[Cert.]</a> <span class="date">Oct. 2023</span></li>
+          <li><strong>Wealth Economy, Sustainable Development and The Law*</strong> <a href="#">[Cert.]</a> <span class="date">Sept. 2023</span></li>
+          <li><em>*Short Courses by University of Cambridge</em></li>
+          <li><strong>Project Management Professional Certification</strong> – Google × Coursera <span class="date">Jun. 2023</span></li>
+          <li><strong>Construction Life Cycle Assessment Specialist</strong> – OneClickLCA <span class="date">Jun. 2023</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
 
+  <section id="projects" class="section projects">
+  <div class="content">
+    <h2 class="section-heading">
+      Creativity fuels innovation, but purpose sustains it.
+    </h2>
+
+    <div class="projects-grid">
+      <!-- Publications -->
+      <div class="publications">
+        <h3>Publications</h3>
+        <ul>
+          <li>
+            R. Bello, K. Thompson, and M. Popoola, 
+            “<strong>Assessing Traffic Congestion on Ikorodu Road, Lagos, Nigeria: A Comparative Analysis of Time-Based and Volume-Based Indices</strong>”, 
+            <em>TARCE</em>, vol. 13, no. 2, pp. 34–44, Oct. 2024. 
+            <a href="https://doi.org/10.70112/tarce-2024.13.2.4243" target="_blank">[DOI]</a>
+          </li>
+          <li>
+            M. Shouler, B. Krueger, N.D. Udeh, H.O. Orekoya, F.R. Jack, R.A Bello, N.O. Tiamiyu, <em>Arup</em>. 
+            “<strong>Understanding The System: Lagos Water Characterization Report</strong>” 
+            <a href="https://www.arup.com/insights/the-city-water-resilience-approach/" target="_blank">[Publication]</a>
+          </li>
+          <li>
+            O.I. Chinedu, H.O.Alegimenlen, J.S. Ezeagba, R.A. Bello, G.A. Adeagbo, C.A. Chinonyerem. 
+            “<strong>Urban Heat Island Analysis Using GIS and Remote Sensing in Kosofe Lagos</strong>”, 
+            <em>MEJNSAR</em>, vol. 6, no. 9, Oct. 2024. 
+            <a href="https://doi.org/10.70382/mejnsar.v6i9.002" target="_blank">[DOI]</a>
+          </li>
+          <li>
+            Ongoing work: 
+            “<strong>Integrating Social, Economic, and Environmental Dimensions into Digital Twin Models for Holistic Urban Mobility Planning in rapidly developing cities</strong>” 
+            <a href="https://drive.google.com/file/d/1C_85pKpcvPCwOlXEJw9Pw2EbtjwfMryc/view?usp=drive_link" target="_blank">[Proposal]</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Projects -->
+      <div class="project-list">
+        <h3>Projects</h3>
+        <ul>
+          <li>
+            <strong>Plastic Waste Use in Paint Production to Diversify Lagos Transport System</strong> – 
+            Winning Proposal at Arup Look, Observe and Shape Challenge 2023 
+            <a href="https://drive.google.com/file/d/1rM30ATvyoYuggm2mbmF1O8foQSJkYi4m/view" target="_blank">[Slides]</a>
+          </li>
+          <li>
+            <strong>Eco-Packy: Eco-Friendly Food Packaging Innovation</strong> – 
+            Winning Proposal & Top 10 Innovator Recognition, Recycle-Up Nigeria 2023 
+            <a href="https://drive.google.com/file/d/19QK1BZ_tbnG262h9cVIDOecT9tvRZdDf/view" target="_blank">[Slides]</a>
+          </li>
+          <li>
+            <strong>Eco-Watts: Powering Lagos Transportation System Through Sustainable Community Waste-to-Power Plants</strong> 
+            <a href="https://drive.google.com/file/d/1o114q0p5miTVtJgf9Wksw5byhI3UF-EI/view" target="_blank">[Slides]</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="section experience">
+  <div class="content">
+    <h2 class="section-heading">Professional Experience</h2>
+
+    <div class="experience-grid">
+      <!-- Left Column: Job List -->
+      <div class="experience-list-wrapper">
+        <ul class="experience-list">
+          <li>
+            <p><strong>Graduate Consultant (PPM - Energy, Water, & Resources)</strong>, Arup, Lagos Office <span class="date">Jan. 2024 – Present</span></p>
+            <p class="desc">Ove Arup & Partners Nigeria (Arup Partnership) is a leading engineering consultancy and development advisory firm in Nigeria.</p>
+          </li>
+
+          <li>
+            <p><strong>Graduate Civil Infrastructure Engineer</strong>, Arup, Lagos Office <span class="date">Jan. 2023 – Present</span></p>
+          </li>
+
+          <li>
+            <p><strong>Founder</strong>, Monarc Group <span class="date">Jul. 2025 – Present</span></p>
+            <p class="desc">Multisector Investment Company focusing on Transportation, Energy, and Technology.</p>
+          </li>
+
+          <li>
+            <p><strong>Student Intern</strong>, Fillet Engineering Services <span class="date">Mar. 2020 – Oct. 2020</span></p>
+            <p class="desc">Part of the mandatory 6-month Student Industrial Work Experience Scheme (SIWES).</p>
+          </li>
+
+          <li>
+            <p><strong>Quality Assessor</strong>, Google Digital Skills for Africa <span class="date">Jan. 2018 – Mar. 2020</span></p>
+            <p class="desc">GDSA is an initiative launched by Google to provide digital skills training to individuals, businesses, and communities across Africa.</p>
+          </li>
+
+          <li>
+            <p><strong>Founder and Creative Director</strong>, KRBDigital <span class="date">Jul. 2020 – Dec. 2022</span></p>
+            <p class="desc">A digital agency that helps businesses and brands scale up their profit and improve their online presence using innovative digital solutions and training.</p>
+          </li>
+
+          <li>
+            <p><strong>Academic Board Chair</strong>, MSSNOOU Ibogun <span class="date">Sept. 2019 – Dec. 2021</span></p>
+            <p class="desc">An organisation that supports the welfare and academic excellence of Muslim students on campus.</p>
+          </li>
+
+          <li>
+            <p><strong>Development Knowledge Facilitator</strong>, NYSC SDG Lagos <span class="date">Jan. 2023 – Nov. 2023</span></p>
+            <p class="desc">Special Community Development SDG Champions charged to accelerate the achievement of the state sustainable development commitments.</p>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Right Column: Image -->
+      <div class="experience-image">
+        <img src="images/HeadBoy_PicAt workshop.jpg" alt="Workshop Experience">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section contact">
+  <div class="contact-content">
+    <h2 class="section-heading">would love to hear from you.</h2>
+    <p class="intro">
+      I am open to infrastructure-related projects and research, and I welcome opportunities 
+      to collaborate on innovative solutions that improve everyday lives.
+    </p>
+    <p class="contact-info">
+      <a href="mailto:rasheedbello.ao@gmail.com">rasheedbello.ao@gmail.com</a> | 
+      <a href="tel:+2347065636687">+234 706 563 6687</a>
+    </p>
+  </div>
+</section>
+
+  </main>
+
+  <!-- BOTTOM BAR -->
+  <div class="bottom-bar">
+    <div class="next-section">
+      <a href="#about">
+        <img src="images/icons/arrow.svg" alt="Next" class="arrow">
+        <span id="next-label">About</span>
+      </a>
+    </div>
+    <div class="social-icons">
+      <a href="https://github.com/" target="_blank"><img src="images/icons/github.svg" alt="GitHub"></a>
+      <a href="https://scholar.google.com/" target="_blank"><img src="images/icons/scholar.svg" alt="Scholar"></a>
+      <a href="https://linkedin.com/" target="_blank"><img src="images/icons/linkedin.svg" alt="LinkedIn"></a>
+    </div>
+  </div>
 </body>
-
 </html>
