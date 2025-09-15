@@ -612,3 +612,31 @@ body {
   color: var(--yellow);
 }
 
+h1 {
+  font-size: 100px;
+  line-height: 1.1;
+}
+h2 {
+  font-size: 60px;
+  line-height: 1.2;
+}
+
+/* Tablet (≤1024px) */
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 72px;
+  }
+  h2 {
+    font-size: 40px;
+  }
+}
+
+/* Mobile (≤767px) */
+@media (max-width: 767px) {
+  h1 {
+    font-size: 72px;
+  }
+  h2 {
+    font-size: 40px;
+  }
+}
