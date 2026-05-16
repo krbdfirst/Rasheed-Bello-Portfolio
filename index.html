@@ -5,13 +5,20 @@
 
   <title>Rasheed Bello - Infrastructure Engineer, Researcher, and Serial Tech Entreprenuer</title>
   <link rel="stylesheet" href="index.css">
+  <script defer src="images/Gallery/gallery-manifest.js"></script>
   <script defer src="index.js"></script>
 </head>
-<body>
+<body data-theme="dark">
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="logo">
-      <img src="images/mylogo.png" alt="Logo">
+      <img
+        id="site-logo"
+        src="images/mylogo.png"
+        data-dark-logo="images/mylogo.png"
+        data-light-logo="images/Logoblack.png"
+        alt="Rasheed Bello logo"
+      >
     </div>
     <ul class="nav-links desktop-only">
       <li><a href="#home" class="active">Home</a></li>
@@ -19,18 +26,18 @@
       <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
       <li>
-        <a href="cv.pdf" class="download">
-          Download CV <img src="images/icons/download.svg" alt="Download">
-        </a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to light theme">
+          <img src="images/icons/light.svg" alt="" aria-hidden="true" data-theme-icon>
+        </button>
       </li>
     </ul>
 
     <!-- Mobile Nav -->
     <div class="mobile-nav mobile-only">
-      <a href="cv.pdf" class="download">
-        <img src="images/icons/download.svg" alt="Download"> CV
-      </a>
-      <button class="hamburger">
+      <button class="theme-toggle theme-toggle-mobile" type="button" data-theme-toggle aria-label="Switch to light theme">
+        <img src="images/icons/light.svg" alt="" aria-hidden="true" data-theme-icon>
+      </button>
+      <button class="hamburger" type="button">
         <img src="images/icons/menu.svg" alt="Menu">
       </button>
     </div>
@@ -38,7 +45,7 @@
 
   <!-- Mobile Dropdown -->
   <div class="mobile-menu">
-    <button class="close-btn">
+    <button class="close-btn" type="button">
       <img src="images/icons/close.svg" alt="Close">
     </button>
     <ul>
@@ -52,7 +59,7 @@
 
   <!-- SECTIONS -->
   <main class="container">
-    <section id="home" class="section hero">
+    <section id="home" class="section hero" data-label="Home">
     <div class="hero-content">
         <div class="hero-text">
         <p class="intro">Hi 👋🏽, I am</p>
@@ -74,10 +81,6 @@
             <img src="images/icons/linkedin.svg" alt="LinkedIn"/>
             </a>
 
-            <a href="cv.pdf" class="download">
-            Download CV 
-            <img src="images/icons/download.svg" alt="Download"/>
-            </a>
         </div>
         </div>
 
@@ -86,7 +89,7 @@
         </div>
     </div>
     </section>
-<section id="about" class="section about">
+<section id="about" class="section about" data-label="About">
   <div class="about-content">
     <!-- Left: Images -->
     <div class="about-images">
@@ -121,7 +124,7 @@
   </div>
 </section>
 
-<section id="education-training" class="section edu-train"> 
+<section id="education-training" class="section edu-train" data-label="Education + Training"> 
   <div class="content">
     <h2 class="section-heading">
       True Learning begins when curiosity takes the lead
@@ -188,7 +191,7 @@
   </div>
 </section>
 
-<section id="experience" class="section experience">
+<section id="experience" class="section experience" data-label="Experience">
   <div class="content">
     <h2 class="section-heading">Professional Experience</h2>
 
@@ -245,7 +248,7 @@
   </div>
 </section>
 
-  <section id="projects" class="section projects">
+  <section id="projects" class="section projects" data-label="Projects">
   <div class="content">
     <h2 class="section-heading">
       Creativity fuels innovation, but purpose sustains it.
@@ -305,7 +308,7 @@
   </div>
 </section>
 
-<section id="contact" class="section contact">
+<section id="contact" class="section contact" data-label="Contact">
   <div class="contact-content">
     <h2 class="section-heading">would love to hear from you.</h2>
     <p class="intro">
@@ -318,7 +321,17 @@
     </p>
   </div>
 </section>
-<section id="gallery" class="section gallery"> </section>
+<section id="gallery" class="section gallery" data-label="Gallery">
+  <div class="gallery-content">
+    <div class="gallery-copy">
+      <p class="gallery-tag">Gallery</p>
+      <h2 class="section-heading">Life, Work, Impact, Fun !</h2>
+    </div>
+    <div class="gallery-marquee" aria-label="Scrolling gallery of Rasheed Bello's work and events">
+      <div class="gallery-track" id="gallery-track"></div>
+    </div>
+  </div>
+</section>
 
   </main>
 
