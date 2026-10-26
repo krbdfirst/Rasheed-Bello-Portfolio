@@ -10,7 +10,6 @@ const PROJECTS = [
   { short: 'Traffic safety pitch', year: '2026', org: 'ITE × CBB · NOCoE × AASHTO', period: 'July 2026', title: 'Traffic safety innovation, on stage', desc: '1st Runner Prize at the ITE × CBB 3M Pitch for traffic safety innovation, and team lead of a finalist team in the NOCoE × AASHTO Transportation Technology Tournament 2026.', tags: ['Pitch', 'ConOps', 'TSMO'], metric: '1st', metricLabel: 'Runner Prize, ITE × CBB 3M Pitch' },
 ];
 
-const THEME_KEY = 'krb-portfolio-theme';
 const ACCENT = '#EEBC5A';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -20,12 +19,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const pad2 = (n) => String(n).padStart(2, '0');
 
   // ---------- Theme ----------
-  // Follows the time of day (light 6am–6pm) until the visitor picks one.
+  // Follows the visitor's local time (light 6am–6pm, dark otherwise). Toggling
+  // overrides it for this visit only; nothing is saved between visits.
+  let themeOverride = null;
+  const timeTheme = () => { const h = new Date().getHours(); return h >= 6 && h < 18 ? 'light' : 'dark'; };
+  const applyTheme = () => root.setAttribute('data-theme', themeOverride || timeTheme());
   document.querySelectorAll('[data-theme-toggle]').forEach(el => el.addEventListener('click', () => {
-    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-    try { localStorage.setItem(THEME_KEY, next); } catch {}
+    themeOverride = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme();
   }));
+  // Switch over at 6am/6pm if the page is left open.
+  setInterval(applyTheme, 60 * 1000);
+  // Earlier versions of the site saved the visitor's choice, which pinned the theme; clear it.
+  try { localStorage.removeItem('krb-portfolio-theme'); } catch {}
 
   // ---------- Mobile menu ----------
   const burger = $('.burger');

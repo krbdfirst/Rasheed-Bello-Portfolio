@@ -8,10 +8,8 @@
   <!-- Pick the theme before first paint so the page never flashes the wrong one -->
   <script>
     (function () {
-      var t = null;
-      try { t = localStorage.getItem('krb-portfolio-theme'); } catch (e) {}
-      if (t !== 'light' && t !== 'dark') { var h = new Date().getHours(); t = h >= 6 && h < 18 ? 'light' : 'dark'; }
-      document.documentElement.setAttribute('data-theme', t);
+      var h = new Date().getHours();
+      document.documentElement.setAttribute('data-theme', h >= 6 && h < 18 ? 'light' : 'dark');
     })();
   </script>
   <link rel="stylesheet" href="index.css">
