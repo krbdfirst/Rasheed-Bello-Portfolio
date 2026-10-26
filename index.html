@@ -1,364 +1,343 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Rasheed Bello - Infrastructure Engineer, Researcher, and Serial Tech Entreprenuer</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rasheed Bello · Transportation &amp; Infrastructure Engineer</title>
+  <meta name="description" content="Rasheed Bello, E.I.T. Transportation and infrastructure engineer and researcher at the University Transportation Centre, SC State University.">
+  <!-- Pick the theme before first paint so the page never flashes the wrong one -->
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('krb-portfolio-theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') { var h = new Date().getHours(); t = h >= 6 && h < 18 ? 'light' : 'dark'; }
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
   <link rel="stylesheet" href="index.css">
   <script defer src="images/Gallery/gallery-manifest.js"></script>
   <script defer src="index.js"></script>
 </head>
-<body data-theme="dark">
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="logo">
-      <img
-        id="site-logo"
-        src="images/mylogo.png"
-        data-dark-logo="images/mylogo.png"
-        data-light-logo="images/Logoblack.png"
-        alt="Rasheed Bello logo"
-      >
-    </div>
-    <ul class="nav-links desktop-only">
-      <li><a href="#home" class="active">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li>
-        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to light theme">
-          <img src="images/icons/light.svg" alt="" aria-hidden="true" data-theme-icon>
-        </button>
-      </li>
-    </ul>
+<body>
+<div class="site" id="site">
 
-    <!-- Mobile Nav -->
-    <div class="mobile-nav mobile-only">
-      <button class="theme-toggle theme-toggle-mobile" type="button" data-theme-toggle aria-label="Switch to light theme">
-        <img src="images/icons/light.svg" alt="" aria-hidden="true" data-theme-icon>
+  <!-- NAVBAR -->
+  <nav class="nav">
+    <a href="#home" class="nav-logo"><img src="images/Logoblack.png" alt="Rasheed Bello"></a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="#about">About</a><a href="#education">Education</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#research">Research</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a>
+      </div>
+      <button class="icon-btn theme-btn" type="button" data-theme-toggle aria-label="Toggle theme">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4.5" fill="var(--accent)" stroke="var(--accent)"></circle><path class="sun-rays" d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
       </button>
-      <button class="hamburger" type="button">
-        <img src="images/icons/menu.svg" alt="Menu">
+      <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
       </button>
     </div>
   </nav>
 
-  <!-- Mobile Dropdown -->
-  <div class="mobile-menu">
-    <button class="close-btn" type="button">
-      <img src="images/icons/close.svg" alt="Close">
-    </button>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <a href="#about">About<span>01</span></a>
+    <a href="#education">Education<span>02</span></a>
+    <a href="#experience">Experience<span>03</span></a>
+    <a href="#projects">Projects<span>04</span></a>
+    <a href="#research">Research<span>05</span></a>
+    <a href="#gallery">Gallery<span>06</span></a>
+    <a href="#contact">Contact<span>07</span></a>
   </div>
 
-  <!-- SECTIONS -->
-  <main class="container">
-    <section id="home" class="section hero" data-label="Home">
-    <div class="hero-content">
-        <div class="hero-text">
-        <p class="intro">Hi 👋🏽, I am</p>
-        <h1 class="name">Rasheed Bello <span>(KRB)</span></h1>
-        <p class="roles">
-            > Graduate Student &amp; Researcher @ SCSU<br/>
-            > Researcher in Transportation &amp; Urban Resilience<br/>
-            > Serial Tech Entrepreneur
-        </p>
-
-        <div class="hero-links">
-            <a href="https://github.com/krbdfirst" target="_blank">
-            <img src="images/icons/github.svg" alt="GitHub"/>
-            </a>
-            <a href="https://scholar.google.com/citations?user=9ILNmOYAAAAJ&hl=en&authuser=1" target="_blank">
-            <img src="images/icons/scholar.svg" alt="Scholar"/>
-            </a>
-            <a href="https://www.linkedin.com/in/rasheed-bello-ao/" target="_blank">
-            <img src="images/icons/linkedin.svg" alt="LinkedIn"/>
-            </a>
-
-        </div>
-        </div>
-
-        <div class="hero-image">
-        <img src="images/my pic b_w 1.png" alt="Rasheed Bello"/>
-        </div>
-    </div>
-    </section>
-<section id="about" class="section about" data-label="About">
-  <div class="about-content">
-    <!-- Left: Images -->
-    <div class="about-images">
-      <div class="img-wrapper portrait">
-        <img src="images/PersornalPortrait.jpg" alt="Portrait of Rasheed Bello"/>
-      </div>
-      <div class="img-wrapper workshop">
-        <img src="images/PicAtWorkshop.jpg" alt="At Workshop"/>
-      </div>
-    </div>
-
-    <!-- Right: Text -->
-    <div class="about-text">
-      <h2>Fueled by a Passion for Thriving Cities and Communities</h2>
-      <p>
-        After spending what feels like a quarter of my life in Lagos traffic, I developed a strong conviction to create solutions that transform mobility. I believe we can do more than just survive city life, we can design systems that connect communities, accelerate trade, and expand opportunities.
-      </p>
-      <p>
-        I’m especially passionate about how Machine Learning (ML) and Geospatial Data Science can reveal the deep interconnections between social, economic, and environmental factors in infrastructure planning and development.
-      </p>
-      <p>
-        I’m always open to research collaborations and project partnerships around:
-      </p>
-      <ul>
-        <li>Urban Mobility &amp; Transport Econometrics</li>
-        <li>Climate Mitigation &amp; Adaptation</li>
-        <li>Infrastructure Policy &amp; Economics</li>
-        <li>Digital Twin Models for City Resilience</li>
-        <li>Tech Solutions for Supply Chain/Transport Management</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section id="education-training" class="section edu-train" data-label="Education + Training"> 
-  <div class="content">
-    <h2 class="section-heading">
-      True Learning begins when curiosity takes the lead
-    </h2>
-
-    <div class="edu-train-grid">
-      <!-- Education -->
-      <div class="education">
-        <h3>Education</h3>
-
-         <div class="edu-item">
-          <h4>MS. in Transportation</h4>
-          <p class="institution">
-            <a href="https://www.scsu.edu/" target="_blank">
-              South Carolina State University, USA
-            </a>
-            <span class="date">Jan. 2026 – Present</span>
-          </p>
-        </div>       
-        <div class="edu-item">
-          <h4>BEng. in Civil Engineering</h4>
-          <p class="institution">
-            <a href="https://www.oouagoiwoye.edu.ng/" target="_blank">
-              Olabisi Onabanjo University, Ogun, Nigeria
-            </a>
-            <span class="date">Oct. 2016 – Jan. 2022</span>
-          </p>
-          <p class="grade">
-            First Class Honours. 4.53/5.00 CGPA (Best Graduating Student in Transportation Research).
-          </p>
-          <p class="project">
-            BEng Thesis: Assessing Traffic Congestion on Ikorodu Road, Lagos, Nigeria.
-          </p>
-        </div>
-
-        <div class="edu-item">
-          <h4>
-            Professional Diploma in Project, Quality, Health, Safety, Environment, and Risk Management
-          </h4>
-          <p class="institution">
-            <a href="https://qhsesleadershipacademy.com/" target="_blank">QHSES Academy</a>
-            <span class="date">Nov. 2023 – July 2024</span>
-          </p>
-          <p class="grade"><em>Graduated Top 10%</em></p>
-          <p class="project">
-            Project: Investigative Analysis of Mont Blanc Tunnel Fire
-            <a href="https://drive.google.com/file/d/1cUIiHkigXfj_pLCL6xi-_3CkNoowRXii/view?usp=drive_link" target="_blank">[Slides]</a>
-          </p>
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow-line"><span></span>Transportation &amp; Infrastructure Engineer · E.I.T.</div>
+      <h1 class="hero-name">Rasheed<br>Bello<span>.</span></h1>
+      <p class="hero-lede">I plan, design and study the networks that move cities: roads, rail, transit and the data behind them. MS Transportation student and researcher at the University Transportation Centre, SC State University.</p>
+      <div class="hero-actions">
+        <a class="btn-solid" href="Rasheed-Bello-CV.pdf" target="_blank">Download CV ↓</a>
+        <div class="hero-icons">
+          <a class="round-link" href="https://www.linkedin.com/in/rasheed-bello-ao/" target="_blank" aria-label="LinkedIn" title="LinkedIn"><img src="images/icons/linkedin.svg" alt=""></a>
+          <a class="round-link" href="https://scholar.google.com/citations?user=9ILNmOYAAAAJ&amp;hl=en" target="_blank" aria-label="Google Scholar" title="Google Scholar"><img src="images/icons/scholar.svg" alt=""></a>
+          <a class="round-link" href="https://github.com/krbdfirst" target="_blank" aria-label="GitHub" title="GitHub"><img src="images/icons/github.svg" alt=""></a>
         </div>
       </div>
+    </div>
 
-      <!-- Trainings -->
-      <div class="trainings">
-        <h3>Trainings</h3>
-        <ul>
-          <li><strong>Intro to Traffic Flow Modeling and Intelligent Transport Systems</strong> – École Polytechnique <span class="date">Ongoing</span></li>
-          <li><strong>DeepTech Ready Fellowship (Geospatial Data Science)</strong> – NITDA × 3MTT <span class="date">Mar. 2025 – Present</span></li>
-          <li><strong>Welcome to Game Theory</strong> – University of Tokyo <span class="date">Mar. 2025</span></li>
-          <li><strong>Writing in the Sciences</strong> – Coursera × Stanford University (with honours) <span class="date">Oct. 2024</span></li>
-          <li><strong>Climate Finance, Negotiation and Policy</strong> – World Resources Institute × GreenHubAfrica <span class="date">Aug. 2023</span></li>
-          <li><strong>McKinsey’s Forward Program</strong> <a href="#">[Cert.]</a> – McKinsey & Co <span class="date">Jun. 2023 – Nov. 2023</span></li>
-          <li><strong>Climate Law and Governance Specialization Course*</strong> (Online Course During COP28) <span class="date">Nov. 2023</span></li>
-          <li><strong>Recycle-Up Nigeria 2023 Innovator</strong> – AIIDEV × SDSN Youth Nigeria <span class="date">Sept. 2023 – Nov. 2023</span></li>
-          <li><strong>Global Diversity Framework, Sustainable Development and The Law*</strong> <span class="date">Oct. 2023</span></li>
-          <li><strong>Paris Agreement, Sustainable Development, and The Law*</strong> <a href="#">[Cert.]</a> <span class="date">Oct. 2023</span></li>
-          <li><strong>Wealth Economy, Sustainable Development and The Law*</strong> <a href="#">[Cert.]</a> <span class="date">Sept. 2023</span></li>
-          <li><em>*Short Courses by University of Cambridge</em></li>
-          <li><strong>Project Management Professional Certification</strong> – Google × Coursera <span class="date">Jun. 2023</span></li>
-          <li><strong>Construction Life Cycle Assessment Specialist</strong> – OneClickLCA <span class="date">Jun. 2023</span></li>
-        </ul>
+    <svg class="towers" viewBox="730 80 740 612" preserveAspectRatio="xMaxYMax meet" aria-hidden="true">
+      <defs>
+        <pattern id="hH" width="10" height="16" patternUnits="userSpaceOnUse"><line x1="0" y1="8" x2="10" y2="8" style="stroke:var(--sk)" stroke-width=".9" opacity=".55"></line></pattern>
+        <pattern id="hV" width="9" height="10" patternUnits="userSpaceOnUse"><line x1="4.5" y1="0" x2="4.5" y2="10" style="stroke:var(--sk)" stroke-width=".9" opacity=".5"></line></pattern>
+        <pattern id="hW" width="22" height="24" patternUnits="userSpaceOnUse"><rect x="4" y="6" width="13" height="12" fill="none" style="stroke:var(--sk)" stroke-width=".9" opacity=".6"></rect></pattern>
+      </defs>
+      <g class="sketch" fill="none" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
+        <g class="stars" stroke-width="1.2"><path d="M900 90h8M904 86v8M1180 60h8M1184 56v8M1360 120h8M1364 116v8M1290 40h6M1293 37v6M820 180h6M823 177v6"></path></g>
+        <g class="celestial" data-theme-toggle>
+          <g class="sun"><circle cx="1015" cy="236" r="44" fill="#EEBC5A"></circle><circle cx="1015" cy="236" r="62" stroke-dasharray="2 10" opacity=".6"></circle></g>
+          <g class="moon"><path d="M1031 198 a42 42 0 1 0 22 62 a34 34 0 1 1 -22 -62 z" fill="#EEBC5A"></path></g>
+        </g>
+        <path class="birds" d="M800 190 l8 -6 l8 6 M830 206 l6 -5 l6 5" stroke-width="1.3"></path>
+        <g class="skyline">
+          <path d="M800 690 V380 H860 M1440 300 H1400 V250" opacity=".35"></path>
+          <rect x="760" y="440" width="90" height="250" fill="var(--bg)"></rect><rect x="768" y="452" width="74" height="238" fill="url(#hH)" stroke="none"></rect><rect x="760" y="440" width="90" height="250"></rect><rect x="860" y="280" width="80" height="410" fill="var(--bg)"></rect><rect x="868" y="292" width="64" height="398" fill="url(#hV)" stroke="none"></rect><rect x="860" y="280" width="80" height="410"></rect><path d="M900 280 V208"></path><circle cx="900" cy="202" r="5" fill="var(--bg)"></circle>
+          <rect x="955" y="340" width="120" height="350" fill="var(--bg)"></rect><rect x="963" y="352" width="104" height="338" fill="url(#hW)" stroke="none"></rect><rect x="955" y="340" width="120" height="350"></rect>
+          <path d="M1090 690 V170 L1200 112 V690 Z" fill="var(--bg)"></path><path d="M1102 690 V180 L1188 134 V690" fill="url(#hV)" stroke="none"></path><path d="M1090 690 V170 L1200 112 V690"></path>
+          <rect x="1215" y="210" width="95" height="480" fill="var(--bg)"></rect><rect x="1223" y="222" width="79" height="468" fill="url(#hH)" stroke="none"></rect><rect x="1215" y="210" width="95" height="480"></rect><path d="M1262 210 V150"></path><circle cx="1262" cy="144" r="5" fill="var(--bg)"></circle>
+          <rect x="1325" y="370" width="130" height="320" fill="var(--bg)"></rect><rect x="1333" y="382" width="114" height="308" fill="url(#hW)" stroke="none"></rect><rect x="1325" y="370" width="130" height="320"></rect>
+        </g>
+      </g>
+    </svg>
+
+    <svg class="street" viewBox="0 560 1440 340" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <g class="sketch" fill="none" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M-20 690 V640 H40 V612 H80 V650 H150 V600 H180 V650 H300 V628 H350 V660 H440 V620 H480 V600 H500 V640 H580 V655 H700 V630 H760" opacity=".3"></path>
+        <g transform="translate(0 300)">
+          <rect x="-20" y="372" width="1480" height="20" fill="var(--bg)"></rect><line x1="-20" y1="364" x2="1460" y2="364"></line><line x1="-20" y1="382" x2="1460" y2="382" opacity=".5"></line>
+          <path d="M140 392 v108 M156 392 v108 M460 392 v108 M476 392 v108 M800 392 v108 M816 392 v108 M1120 392 v108 M1136 392 v108 M1400 392 v108 M1416 392 v108"></path>
+          <path d="M126 392 h44 l-8 12 h-28 z M446 392 h44 l-8 12 h-28 z M786 392 h44 l-8 12 h-28 z M1106 392 h44 l-8 12 h-28 z M1386 392 h44 l-8 12 h-28 z" fill="var(--bg)"></path>
+          <g class="train">
+            <path d="M0 362 q12 -28 46 -28 H122 V362 Z M128 362 V334 H250 V362 Z M256 362 V334 H360 q34 0 46 28 Z" fill="var(--bg)"></path>
+            <path d="M52 340 h58 v10 h-58 z M22 352 l12 -12 h12 v12 z M138 340 h102 v10 h-102 z M266 340 h96 v10 h-96 z M372 340 l12 0 l10 12 h-22 z" stroke-width="1.1"></path>
+            <circle cx="398" cy="356" r="2.5" fill="#EEBC5A" stroke="none"></circle><circle cx="8" cy="356" r="2.5" fill="#EEBC5A" stroke="none"></circle>
+          </g>
+          <path d="M60 596 V290 q0 -22 26 -22 h14 M1380 596 V290 q0 -22 -26 -22 h-14"></path>
+          <path d="M92 268 h18 l-4 10 h-10 z M1330 268 h18 l-4 10 h-10 z" fill="var(--bg)"></path>
+          <circle class="lamp" cx="101" cy="284" r="9" fill="#EEBC5A" stroke="none"></circle><circle class="lamp" cx="1339" cy="284" r="9" fill="#EEBC5A" stroke="none"></circle>
+          <path d="M300 500 q-30 0 -30 -22 q0 -22 26 -22 q4 -18 24 -18 q22 0 24 22 q20 2 20 20 q0 20 -30 20 z M1000 500 q-24 0 -24 -18 q0 -18 22 -18 q6 -14 22 -14 q18 0 20 18 q16 2 16 16 q0 16 -24 16 z" fill="var(--bg)"></path>
+          <line x1="-20" y1="500" x2="1460" y2="500"></line><line x1="-20" y1="510" x2="1460" y2="510" opacity=".5"></line><line x1="-20" y1="596" x2="1460" y2="596"></line>
+          <line x1="-20" y1="553" x2="1460" y2="553" stroke-dasharray="26 22" opacity=".7"></line>
+          <rect x="580" y="511" width="48" height="84" fill="var(--bg)" stroke="none"></rect><path d="M580 512 V594 M628 512 V594" stroke-width="1.6"></path><path d="M568 500 V440 M560 440 h16 v24 h-16 z" stroke-width="1.4"></path><circle cx="568" cy="448" r="3" fill="#EEBC5A" stroke="none"></circle><circle cx="604" cy="470" r="4.5"></circle><path d="M604 475 V488 M604 488 l-5 11 M604 488 l6 11 M604 479 l-6 6 M604 479 l6 5" stroke-width="1.4"></path>
+          <g class="drive bus">
+            <g class="bob">
+              <path d="M0 542 V480 q0 -8 8 -8 H140 q10 0 12 10 l4 60 Z" fill="var(--bg)"></path>
+              <path d="M10 482 h24 v22 h-24 z M40 482 h24 v22 h-24 z M70 482 h24 v22 h-24 z M100 482 h20 v22 h-20 z M126 482 h20 l2 22 h-22 z M100 508 v30 M120 508 v30 M0 520 h156" stroke-width="1.1"></path>
+              <rect x="14" y="474" width="40" height="5" fill="#EEBC5A" stroke="none"></rect>
+              <circle cx="153" cy="530" r="2.5" fill="#EEBC5A" stroke="none"></circle>
+            </g>
+            <circle cx="32" cy="542" r="9" fill="var(--bg)"></circle><circle cx="124" cy="542" r="9" fill="var(--bg)"></circle>
+          </g>
+          <g class="drive car">
+            <path d="M0 542 V500 q0 -6 6 -6 H70 l16 18 q6 2 6 8 V542 Z" fill="var(--bg)"></path><path d="M10 500 h40 v14 h-40 z M56 500 h12 l12 14 h-24 z" stroke-width="1.1"></path>
+            <circle cx="20" cy="544" r="8" fill="var(--bg)"></circle><circle cx="72" cy="544" r="8" fill="var(--bg)"></circle>
+          </g>
+          <g class="drive car-left">
+            <path d="M0 584 V572 q0 -6 8 -8 l14 -12 h34 l16 12 q12 2 12 8 V584 Z" fill="var(--bg)"></path><path d="M26 556 h12 v8 h-20 z M44 556 h10 l8 8 h-18 z" stroke-width="1.1"></path>
+            <circle cx="18" cy="586" r="7" fill="var(--bg)"></circle><circle cx="66" cy="586" r="7" fill="var(--bg)"></circle>
+          </g>
+          <g class="drive bike">
+            <circle cx="0" cy="584" r="10"></circle><circle cx="34" cy="584" r="10"></circle>
+            <path d="M0 584 L12 566 L28 566 L34 584 M12 566 L17 584 L28 566 M10 562 h6 M28 566 l-2 -8 h6"></path>
+            <path d="M17 584 L20 556 L16 544 M18 548 L28 560"></path>
+            <circle cx="16" cy="538" r="5" fill="#EEBC5A"></circle>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <div class="portrait">
+      <div class="portrait-frame"></div>
+      <img src="images/PersornalPortrait.jpg" alt="Rasheed Bello">
+      <div class="portrait-badge"><div>3 yrs</div>road, rail &amp; water projects</div>
+    </div>
+    <div>
+      <div class="eyebrow">01 · About</div>
+      <h2 class="h2">Fueled by a passion for thriving cities and communities.</h2>
+      <p class="body-lg">After spending what feels like a quarter of my life in Lagos traffic, I developed a strong conviction to create solutions that transform mobility. I believe we can do more than just survive city life, we can design systems that connect communities, accelerate trade, and expand opportunities.</p>
+      <p class="body-lg last">My work spans traffic data collection, congestion and safety analysis, microsimulation, and roadway, earthworks and drainage design, from Lagos transit corridors to U.S. highway safety data.</p>
+      <div class="label">Open to collaborations on</div>
+      <div class="chips">
+        <span class="chip">People-centered mobility</span>
+        <span class="chip">Urban mobility &amp; transport econometrics</span>
+        <span class="chip">Traffic safety &amp; crash data</span>
+        <span class="chip">Digital twins for city resilience</span>
+        <span class="chip">Climate mitigation &amp; adaptation</span>
+        <span class="chip">Infrastructure policy &amp; economics</span>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="experience" class="section experience" data-label="Experience">
-  <div class="content">
-    <h2 class="section-heading">Professional Experience</h2>
-
-    <div class="experience-grid">
-      <!-- Left Column: Job List -->
-      <div class="experience-list-wrapper">
-        <ul class="experience-list">
-          <li>
-            <p><strong>Research Assistant</strong>Centre of Connected Multimodal Mobility, SCSU, USA<span class="date">Jan. 2026 – Present</span></p>
-          </li>
-          <li>
-            <p><strong>Civil Infrastructure Engineer</strong>, Arup, Lagos Office <span class="date">Dec. 2026 – Jan 2026</span></p>
-            <p class="desc">Ove Arup & Partners Nigeria (Arup Partnership) is a leading engineering consultancy and development advisory firm in Nigeria.</p>
-          </li>
-          <li>
-            <p><strong>Graduate Engineer & Consultant (Transportation, Energy, Water, & Resources)</strong>, Arup, Lagos Office <span class="date">Jan. 2023 – Jan 2026</span></p>
-          </li>
-          <li>
-            <p><strong>Founder</strong>, Monarc Group <span class="date">(Vision Stage)</span></p>
-            <p class="desc">Multisector Investment Company focusing on Transportation, Energy, and Technology.</p>
-          </li>
-
-          <li>
-            <p><strong>Student Intern</strong>, Fillet Engineering Services <span class="date">Mar. 2020 – Oct. 2020</span></p>
-            <p class="desc">Part of the mandatory 6-month Student Industrial Work Experience Scheme (SIWES).</p>
-          </li>
-
-          <li>
-            <p><strong>Quality Assessor</strong>, Google Digital Skills for Africa <span class="date">Jan. 2018 – Mar. 2020</span></p>
-            <p class="desc">GDSA is an initiative launched by Google to provide digital skills training to individuals, businesses, and communities across Africa.</p>
-          </li>
-
-          <li>
-            <p><strong>Founder and Creative Director</strong>, KRBDigital <span class="date">Jul. 2020 – Dec. 2022</span></p>
-            <p class="desc">A digital agency that helps businesses and brands scale up their profit and improve their online presence using innovative digital solutions and training.</p>
-          </li>
-
-          <li>
-            <p><strong>Academic Board Chair</strong>, MSSNOOU Ibogun <span class="date">Sept. 2019 – Dec. 2021</span></p>
-            <p class="desc">An organisation that supports the welfare and academic excellence of Muslim students on campus.</p>
-          </li>
-
-          <li>
-            <p><strong>Development Knowledge Facilitator</strong>, NYSC SDG Lagos <span class="date">Jan. 2023 – Nov. 2023</span></p>
-            <p class="desc">Special Community Development SDG Champions charged to accelerate the achievement of the state sustainable development commitments.</p>
-          </li>
-        </ul>
+  <!-- EDUCATION -->
+  <section id="education" class="band-sec">
+    <div class="wrap">
+      <div class="eyebrow">02 · Education &amp; Toolkit</div>
+      <div class="edu-grid">
+        <div class="edu-card"><div class="muted-sm">Jan 2026 – Dec 2027</div><h3>MS, Transportation &amp; Highway Engineering</h3><div class="edu-sub">South Carolina State University · GPA 4.00/4.00</div></div>
+        <div class="edu-card"><div class="muted-sm">Oct 2016 – Jan 2022</div><h3>BEng, Civil Engineering (Transportation)</h3><div class="edu-sub">Olabisi Onabanjo University · First Class Honours, 4.53/5.00. Best Graduating Student in Transportation Research.</div></div>
+        <div class="edu-card"><div class="muted-sm">Certification</div><h3>Engineer-in-Training, Civil</h3><div class="edu-sub">SC Board · August 2026. Passed FE Civil.</div></div>
       </div>
-
-      <!-- Right Column: Image -->
-      <div class="experience-image">
-        <img src="images/HeadBoy_PicAt workshop.jpg" alt="Workshop Experience">
+      <div class="skills-grid">
+        <div><div class="label">Expert</div><div class="chips">
+          <span class="skill solid">AutoCAD</span><span class="skill solid">Civil 3D</span><span class="skill solid">QGIS</span><span class="skill solid">SUMO</span><span class="skill solid">Revit</span><span class="skill solid">Excel</span>
+        </div></div>
+        <div><div class="label">Working</div><div class="chips">
+          <span class="skill">Python</span><span class="skill">Google Earth Engine</span><span class="skill">PowerBI</span><span class="skill">HEC-RAS</span><span class="skill">MS Project</span><span class="skill">Tekla</span><span class="skill">FARS · HSIS</span>
+        </div></div>
       </div>
+      <details class="more">
+        <summary><span class="plus">+</span>More: earlier roles, leadership &amp; trainings</summary>
+        <div class="more-grid">
+          <div><div class="label">Other roles</div>
+            <div class="more-row"><b>Founder, Monarc Group</b><span> · Vision stage</span></div>
+            <div class="more-row"><b>Founder &amp; Creative Director, KRBDigital</b><span> · 2020 – 2022</span></div>
+            <div class="more-row"><b>Quality Assessor, Google Digital Skills for Africa</b><span> · 2018 – 2020</span></div>
+            <div class="more-row"><b>Development Knowledge Facilitator, NYSC SDG Lagos</b><span> · 2023</span></div>
+            <div class="more-row"><b>Academic Board Chair, MSSN OOU</b><span> · 2019 – 2021</span></div>
+          </div>
+          <div><div class="label">Leadership &amp; community</div>
+            <div class="more-row"><b>Gold Judge, Technovation Challenge</b><span> · 2026 – Present</span></div>
+            <div class="more-row"><b>5-Year Strategy Committee, Arup Nigeria</b><span> · 2024</span></div>
+            <div class="more-row"><b>ACE Working Group, YOUNGO</b><span> · 2023 – Present</span></div>
+            <div class="more-row"><b>Member, YALI Network Lagos Hub</b><span> · 2022 – Present</span></div>
+          </div>
+          <div><div class="label">Trainings</div>
+            <div class="more-row"><b>Traffic Flow Modeling &amp; ITS, École Polytechnique</b><span> · In progress</span></div>
+            <div class="more-row"><b>DeepTech Ready Fellowship (Geospatial), NITDA × 3MTT</b><span> · 2025</span></div>
+            <div class="more-row"><b>Writing in the Sciences, Stanford (honours)</b><span> · 2024</span></div>
+            <div class="more-row"><b>PQHSERM Professional Diploma, QHSES Academy</b><span> · Top 10%, 2024</span></div>
+            <div class="more-row"><b>McKinsey's Forward Program</b><span> · 2023</span></div>
+            <div class="more-row"><b>Climate Finance, Negotiation &amp; Policy, WRI</b><span> · 2023</span></div>
+          </div>
+        </div>
+      </details>
     </div>
-  </div>
-</section>
+  </section>
 
-  <section id="projects" class="section projects" data-label="Projects">
-  <div class="content">
-    <h2 class="section-heading">
-      Creativity fuels innovation, but purpose sustains it.
-    </h2>
-
-    <div class="projects-grid">
-      <!-- Publications -->
-      <div class="publications">
-        <h3>Publications</h3>
-        <ul>
-          <li>
-            R. Bello, K. Thompson, and M. Popoola, 
-            “<strong>Assessing Traffic Congestion on Ikorodu Road, Lagos, Nigeria: A Comparative Analysis of Time-Based and Volume-Based Indices</strong>”, 
-            <em>TARCE</em>, vol. 13, no. 2, pp. 34–44, Oct. 2024. 
-            <a href="https://doi.org/10.70112/tarce-2024.13.2.4243" target="_blank">[DOI]</a>
-          </li>
-          <li>
-            M. Shouler, B. Krueger, N.D. Udeh, H.O. Orekoya, F.R. Jack, R.A Bello, N.O. Tiamiyu, <em>Arup</em>. 
-            “<strong>Understanding The System: Lagos Water Characterization Report</strong>” 
-            <a href="https://www.arup.com/insights/the-city-water-resilience-approach/" target="_blank">[Publication]</a>
-          </li>
-          <li>
-            O.I. Chinedu, H.O.Alegimenlen, J.S. Ezeagba, R.A. Bello, G.A. Adeagbo, C.A. Chinonyerem. 
-            “<strong>Urban Heat Island Analysis Using GIS and Remote Sensing in Kosofe Lagos</strong>”, 
-            <em>MEJNSAR</em>, vol. 6, no. 9, Oct. 2024. 
-            <a href="https://doi.org/10.70382/mejnsar.v6i9.002" target="_blank">[DOI]</a>
-          </li>
-          <li>
-            Ongoing work: 
-            “<strong>Integrating Social, Economic, and Environmental Dimensions into Digital Twin Models for Holistic Urban Mobility Planning in rapidly developing cities</strong>” 
-            <a href="https://drive.google.com/file/d/1C_85pKpcvPCwOlXEJw9Pw2EbtjwfMryc/view?usp=drive_link" target="_blank">[Proposal]</a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Projects -->
-      <div class="project-list">
-        <h3>Projects</h3>
-        <ul>
-          <li>
-            <strong>Plastic Waste Use in Paint Production to Diversify Lagos Transport System</strong> – 
-            Winning Proposal at Arup Look, Observe and Shape Challenge 2023 
-            <a href="https://drive.google.com/file/d/1rM30ATvyoYuggm2mbmF1O8foQSJkYi4m/view" target="_blank">[Slides]</a>
-          </li>
-          <li>
-            <strong>Eco-Packy: Eco-Friendly Food Packaging Innovation</strong> – 
-            Winning Proposal & Top 10 Innovator Recognition, Recycle-Up Nigeria 2023 
-            <a href="https://drive.google.com/file/d/19QK1BZ_tbnG262h9cVIDOecT9tvRZdDf/view" target="_blank">[Slides]</a>
-          </li>
-          <li>
-            <strong>Eko-Watts: Powering Lagos Transportation System Through Sustainable Community Waste-to-Power Plants</strong> -
-            Winning Proposal at Arup Look, Observe and Shape Challenge 2024 
-            <a href="https://drive.google.com/file/d/1o114q0p5miTVtJgf9Wksw5byhI3UF-EI/view" target="_blank">[Slides]</a>
-          </li>
-        </ul>
+  <!-- EXPERIENCE -->
+  <section id="experience" class="plain-sec">
+    <div class="wrap">
+      <div class="eyebrow">03 · Experience</div>
+      <h2 class="h2 exp-title">Building the systems that keep cities moving.</h2>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-date">Jan 2026 – Present</div>
+          <div class="tl-rail"><i></i><b></b></div>
+          <div class="tl-body"><div class="tl-mdate">Jan 2026 – Present</div><h3>Research Assistant</h3><div class="tl-org">University Transportation Centre, SC State University</div><p>Building transportation econometric models and decision-support tools for equity, economic and safety outcomes; supporting federal-relevant research with Cohda testbeds and SUMO, Synchro, NS-3, OMNET++ and Veins.</p></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">Jan 2024 – Jan 2026</div>
+          <div class="tl-rail"><i></i><b></b></div>
+          <div class="tl-body"><div class="tl-mdate">Jan 2024 – Jan 2026</div><h3>Civil / Infrastructure Engineer</h3><div class="tl-org">Ove Arup &amp; Partners Nigeria</div><p>Geospatial accessibility analysis on the $2B Lagos Green Line; civil design lead for three National Diagnostic Centres.</p></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">Jan – Dec 2023</div>
+          <div class="tl-rail"><i></i><b></b></div>
+          <div class="tl-body"><div class="tl-mdate">Jan – Dec 2023</div><h3>Graduate Civil Infrastructure Intern</h3><div class="tl-org">Ove Arup &amp; Partners Nigeria</div><p>100 km+ agricultural road network in Civil 3D; cost and schedule tracking on the Enugu–Onitsha Expressway.</p></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">Nov 2020 – Dec 2021</div>
+          <div class="tl-rail"><i></i><b></b></div>
+          <div class="tl-body"><div class="tl-mdate">Nov 2020 – Dec 2021</div><h3>Undergraduate Researcher</h3><div class="tl-org">Transportation Research Group, Olabisi Onabanjo University</div><p>Congestion study on Ikorodu Road, Lagos, published as first author in TARCE (2024).</p></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">Mar – Oct 2020</div>
+          <div class="tl-rail"><i></i><b></b></div>
+          <div class="tl-body"><div class="tl-mdate">Mar – Oct 2020</div><h3>Student Civil Engineering Intern</h3><div class="tl-org">Fillet Engineering Services</div><p>Supervised piling works to a daily target of 10+ precast piles, with a zero-error record on stocktaking and quality checks.</p></div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="contact" class="section contact" data-label="Contact">
-  <div class="contact-content">
-    <h2 class="section-heading">would love to hear from you.</h2>
-    <p class="intro">
-      I am open to infrastructure-related projects and research, and I welcome opportunities 
-      to collaborate on innovative solutions that improve everyday lives.
-    </p>
-    <p class="contact-info">
-      <a href="mailto:rasheedbello.ao@gmail.com">rbello@scsu.edu</a> | 
-    </p>
-  </div>
-</section>
-<section id="gallery" class="section gallery" data-label="Gallery">
-  <div class="gallery-content">
-    <div class="gallery-copy">
-      <p class="gallery-tag">Gallery</p>
-      <h2 class="section-heading">Life, Work, Impact, Fun !</h2>
+  <!-- PROJECTS (stations and card are rendered by index.js from PROJECTS) -->
+  <section id="projects" class="band-sec projects">
+    <div class="wrap">
+      <div class="eyebrow">04 · The Project Line</div>
+      <h2 class="h2 flush">Every stop, a piece of infrastructure.</h2>
+      <div class="line-scroll">
+        <div class="line">
+          <div class="line-track"></div>
+          <div class="line-fill"></div>
+          <!-- stations -->
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-main">
+          <div class="proj-meta"><span class="proj-period"></span><span class="proj-org"></span></div>
+          <h3 class="proj-title"></h3>
+          <p class="proj-desc"></p>
+          <div class="proj-tags"></div>
+          <a class="btn-solid sm proj-link" target="_blank" hidden></a>
+        </div>
+        <div class="proj-side">
+          <div class="proj-grid"></div>
+          <div class="proj-metric"></div>
+          <div class="proj-nav"><span class="proj-count"></span><button type="button" class="proj-prev" aria-label="Previous project">←</button><button type="button" class="proj-next" aria-label="Next project">→</button></div>
+          <div class="proj-metric-label"></div>
+        </div>
+      </div>
     </div>
-    <div class="gallery-marquee" aria-label="Scrolling gallery of Rasheed Bello's work and events">
-      <div class="gallery-track" id="gallery-track"></div>
-    </div>
-  </div>
-</section>
+  </section>
 
-  </main>
+  <!-- RESEARCH -->
+  <section id="research" class="research">
+    <div>
+      <div class="eyebrow">05 · Research</div>
+      <h2 class="h2">Creativity fuels innovation, but purpose sustains it.</h2>
+      <p class="body">Current work at the University Transportation Centre develops transportation econometric models and decision-support tools for equity, economic and safety outcomes, using hardware testbeds (Cohda) and simulation in SUMO, Synchro, NS-3, OMNET++ and Veins. Papers accepted at IEEE, AHFE (Elsevier) and TRB/TRR.</p>
+      <a class="btn-outline" href="https://scholar.google.com/citations?user=9ILNmOYAAAAJ&amp;hl=en" target="_blank">Google Scholar ↗</a>
+    </div>
+    <div class="pubs">
+      <a class="pub" href="https://doi.org/10.70112/tarce-2024.13.2.4243" target="_blank"><div class="pub-year">2024</div><div><div class="pub-title">Assessing Traffic Congestion on Ikorodu Road, Lagos: Time-Based vs Volume-Based Indices</div><div class="pub-meta">R. Bello, K. Thompson, M. Popoola · TARCE 13(2) · DOI ↗</div></div></a>
+      <a class="pub" href="https://doi.org/10.70382/mejnsar.v6i9.002" target="_blank"><div class="pub-year">2024</div><div><div class="pub-title">Urban Heat Island Analysis Using GIS and Remote Sensing in Kosofe, Lagos</div><div class="pub-meta">Chinedu et al. · MEJNSAR 6(9) · DOI ↗</div></div></a>
+      <a class="pub" href="https://www.arup.com/insights/the-city-water-resilience-approach/" target="_blank"><div class="pub-year">Arup</div><div><div class="pub-title">Understanding the System: Lagos Water Characterization Report</div><div class="pub-meta">Shouler, Krueger, Udeh, Orekoya, Jack, Bello, Tiamiyu · Publication ↗</div></div></a>
+      <a class="pub" href="https://scholar.google.com/citations?user=9ILNmOYAAAAJ&amp;hl=en" target="_blank"><div class="pub-year">2026</div><div><div class="pub-title">Human Driver Temperament and the Safety Impact of a C-V2X Denial-of-Service Flooding Attack in Mixed-Autonomy Traffic</div><div class="pub-meta">R. Bello et al. · Google Scholar ↗</div></div></a>
+      <a class="pub" href="https://scholar.google.com/citations?user=9ILNmOYAAAAJ&amp;hl=en" target="_blank"><div class="pub-year">2026</div><div><div class="pub-title">Recovering Hidden Wildlife–Vehicle Collisions from Existing Crash Data: A Cross-State Framework for Detection, Prevalence Estimation, and Under-Reporting Audits</div><div class="pub-meta">R. Bello et al. · Google Scholar ↗</div></div></a>
+    </div>
+  </section>
 
-  <!-- BOTTOM BAR -->
-  <div class="bottom-bar">
-    <div class="next-section" >
-      <a href="#about">
-        <img src="images/icons/arrow.svg" alt="Next" class="arrow">
-        <span id="next-label">About</span>
-      </a>
+  <!-- RECOGNITION -->
+  <section class="dark-band">
+    <div class="wrap">
+      <div class="eyebrow">06 · Recognition</div>
+      <div class="awards">
+        <div class="award"><div class="award-date">July 2026</div><div class="award-title">1st Runner Prize</div><div class="award-body">ITE × CBB 3M Pitch, traffic safety innovation</div></div>
+        <div class="award"><div class="award-date">July 2026</div><div class="award-title">Finalist, Team Lead</div><div class="award-body">NOCoE × AASHTO Transportation Technology Tournament</div></div>
+        <div class="award"><div class="award-date">Sept 2025</div><div class="award-title">$34,080 Scholarship</div><div class="award-body">University Transportation Centre assistantship</div></div>
+        <div class="award"><div class="award-date">'23 &amp; '24</div><div class="award-title">Two-time Winner</div><div class="award-body">Arup Look, Observe and Shape (LOS) Challenge</div></div>
+        <div class="award"><div class="award-date">Jan 2022</div><div class="award-title">Best Graduating Student</div><div class="award-body">Transportation Research, Olabisi Onabanjo University</div></div>
+      </div>
     </div>
-    <div class="social-icons">
-      <a href="https://github.com/krbdfirst" target="_blank"><img src="images/icons/github.svg" alt="GitHub"></a>
-      <a href="https://scholar.google.com/citations?user=9ILNmOYAAAAJ&hl=en&authuser=1" target="_blank"><img src="images/icons/scholar.svg" alt="Scholar"></a>
-      <a href="https://www.linkedin.com/in/rasheed-bello-ao/" target="_blank"><img src="images/icons/linkedin.svg" alt="LinkedIn"></a>
+  </section>
+
+  <!-- GALLERY (rows are rendered by index.js from images/Gallery/gallery-manifest.js) -->
+  <section id="gallery" class="gallery">
+    <div class="wrap gallery-head">
+      <div><div class="eyebrow">07 · Gallery</div>
+      <h2 class="h2 flush">Life, work, impact, fun!</h2></div>
+      <div class="gallery-ctl">
+        <button type="button" class="icon-btn lg strip-toggle" aria-label="Pause or play">❚❚</button>
+      </div>
     </div>
-  </div>
+    <div class="strips"></div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="dark-band contact">
+    <div class="wrap">
+      <div class="eyebrow">08 · Next stop</div>
+      <h2 class="contact-title">Would love to hear from you.</h2>
+      <p class="contact-lede">I am open to infrastructure-related projects and research, and I welcome opportunities to collaborate on innovative solutions that improve everyday lives. Available for part-time internships and open to relocation nationwide.</p>
+      <div class="contact-row" data-track-row>
+        <a class="pill accent" href="mailto:rbello@scsu.edu">rbello@scsu.edu</a>
+        <a class="pill" href="https://www.linkedin.com/in/rasheed-bello-ao/" target="_blank">LinkedIn ↗</a>
+        <a class="pill" href="https://scholar.google.com/citations?user=9ILNmOYAAAAJ&amp;hl=en" target="_blank">Scholar ↗</a>
+        <a class="pill" href="https://github.com/krbdfirst" target="_blank">GitHub ↗</a>
+      </div>
+      <div class="footer">
+        <span>© 2026 Rasheed Bello · Orangeburg, SC</span><span>rasheedbello.ao@gmail.com</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" hidden>
+  <img alt="">
+  <button type="button" class="lb-prev" aria-label="Previous">←</button>
+  <button type="button" class="lb-next" aria-label="Next">→</button>
+  <div class="lb-label"></div>
+</div>
 </body>
 </html>

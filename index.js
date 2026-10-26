@@ -1,432 +1,288 @@
+const PROJECTS = [
+  { short: 'Ikorodu Road congestion', year: '2021', org: 'OOU Transportation Research Group', period: '2020 – 2021', title: 'Assessing traffic congestion on Ikorodu Road, Lagos', desc: 'Led a 10-person field team collecting on-site traffic data along a major Lagos arterial, then applied travel time, Speed Performance Index and level-of-service indices to locate bottlenecks and develop congestion alleviation strategies. Published as first author in TARCE (2024).', tags: ['Traffic data', 'SPI', 'LOS'], metric: '10', metricLabel: 'person field team on a major Lagos arterial' },
+  { short: '100 km farm road network', year: '2023', org: 'Arup', period: '2023', title: '100 km+ road network for a 20,000-hectare agricultural development', desc: 'Designed the network and automated drawing production with Civil 3D layout tools to cut sheet-generation time, with under 1% rework.', tags: ['Civil 3D', 'Roadway design', 'Automation'], metric: '<1%', metricLabel: 'rework across automated drawing production' },
+  { short: 'Enugu–Onitsha Expressway', year: '2023', org: 'Arup', period: '2023', title: 'Enugu–Onitsha Expressway rehabilitation', desc: 'Tracked cost and schedule performance in Microsoft Project, reconciling interim payment certificates and procurement records for two concurrent contractors.', tags: ['Cost control', 'MS Project'], metric: '2', metricLabel: 'concurrent contractors reconciled' },
+  { short: 'Plastic paint & Eko-Watts', year: "'23 '24", org: 'Arup LOS Challenge', period: '2023 & 2024', title: 'Winning proposals: plastic-waste paint and Eko-Watts', desc: 'Plastic waste in paint production to diversify the Lagos transport system (2023), and Eko-Watts: powering Lagos transport through community waste-to-power plants (2024). Both won the Look, Observe and Shape Challenge.', tags: ['Innovation', 'Circular economy'], metric: '2×', metricLabel: 'Look, Observe and Shape Challenge winner' },
+  { short: 'National Diagnostic Centres', year: '2024', org: 'Arup for NSIA', period: '2024 – 2026', title: 'Civil infrastructure for National Diagnostic Centres', desc: 'Led civil infrastructure design for three of twelve centres for the Nigerian Sovereign Investment Authority, covering roadway design, earthworks, catchment assessment and stormwater drainage.', tags: ['Roadway', 'Earthworks', 'Drainage'], metric: '3/12', metricLabel: 'centres designed' },
+  { short: 'Lagos Green Line', year: '2025', org: 'Arup', period: '2024 – 2026', title: 'Lagos Green Line transit corridor due diligence', desc: 'Led the geospatial accessibility analysis within the due-diligence team, running isochrone analysis to identify stations for prioritisation, merging or deferral, and auditing drawings and the Bill of Engineering Measurement and Evaluation for design and cost irregularities.', tags: ['Transit', 'Isochrones', 'GIS'], metric: '$2B', metricLabel: 'transit corridor under review' },
+  { short: 'Wildlife crossings', year: '2026', org: 'University Transportation Centre, SC State University', period: '2026 – Present', title: 'Wildlife crossing effectiveness & network connectivity', desc: 'Investigating wildlife crossing effectiveness and habitat/network connectivity across U.S. transportation corridors using spatial and traffic safety data.', tags: ['Safety', 'Spatial data', 'FARS · HSIS'], metric: 'U.S.', metricLabel: 'corridor-scale safety analysis' },
+  { short: 'SCSU Game Day parking', year: '2026', org: 'South Carolina State University', period: '2026', title: 'SCSU Game Day parking design', desc: 'We designed two lots to accommodate game-day traffic demand despite the reduced parking supply caused by new hostel and building developments on campus.', tags: ['Parking design', 'Campus mobility', 'Demand'], metric: '2', metricLabel: 'parking lots designed for game-day demand', link: 'https://drive.google.com/file/d/1oJgt0lncnddICCxIELD7hssVUkPxwirm/view?usp=sharing', linkLabel: 'Design document' },
+  { short: 'Traffic safety pitch', year: '2026', org: 'ITE × CBB · NOCoE × AASHTO', period: 'July 2026', title: 'Traffic safety innovation, on stage', desc: '1st Runner Prize at the ITE × CBB 3M Pitch for traffic safety innovation, and team lead of a finalist team in the NOCoE × AASHTO Transportation Technology Tournament 2026.', tags: ['Pitch', 'ConOps', 'TSMO'], metric: '1st', metricLabel: 'Runner Prize, ITE × CBB 3M Pitch' },
+];
+
+const THEME_KEY = 'krb-portfolio-theme';
+const ACCENT = '#EEBC5A';
+
 document.addEventListener('DOMContentLoaded', () => {
-  // container that holds the scrollable sections
-  const container = document.querySelector('.container') || document.documentElement;
-  const body = document.body;
-  const siteLogo = document.getElementById('site-logo');
-  const themeToggles = Array.from(document.querySelectorAll('[data-theme-toggle]'));
-  const themeStorageKey = 'krb-portfolio-theme';
-  const themeMeta = {
-    dark: {
-      toggleIcon: 'images/icons/light.svg',
-      ariaLabel: 'Switch to light theme'
-    },
-    light: {
-      toggleIcon: 'images/icons/dark.svg',
-      ariaLabel: 'Switch to dark theme'
-    }
-  };
+  const root = document.documentElement;
+  const site = document.getElementById('site');
+  const $ = (sel, el = document) => el.querySelector(sel);
+  const pad2 = (n) => String(n).padStart(2, '0');
 
-  // all sections in document order (only those with an id)
-  const sectionEls = Array.from(container.querySelectorAll('.section')).filter(s => s.id);
-  const sections = sectionEls.map(s => s.id);
-  const sectionLabels = new Map(
-    sectionEls.map(section => [section.id, section.dataset.label || prettyLabel(section.id)])
-  );
+  // ---------- Theme ----------
+  // Follows the time of day (light 6am–6pm) until the visitor picks one.
+  document.querySelectorAll('[data-theme-toggle]').forEach(el => el.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem(THEME_KEY, next); } catch {}
+  }));
 
-  // Desktop nav links (the ones that should show the "active" state)
-  const desktopNavLinks = Array.from(document.querySelectorAll('.nav-links a'));
-
-  // Mobile menu links (optional: we also toggle active class here for parity)
-  const mobileMenuLinks = Array.from(document.querySelectorAll('.mobile-menu a'));
-
-  // all internal anchors (href starting with '#')
-  const internalLinks = Array.from(document.querySelectorAll('a[href^="#"]'));
-
-  // Next button in your HTML (bottom-bar)
-  const nextAnchor = document.querySelector('.bottom-bar .next-section a');
-  const nextLabel = document.getElementById('next-label');
-  const galleryMarquee = document.querySelector('.gallery-marquee');
-  const galleryTrack = document.getElementById('gallery-track');
-  const galleryPattern = /\.(avif|gif|jpe?g|png|svg|webp)$/i;
-  const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let galleryAnimationFrame = 0;
-  let galleryLastTimestamp = 0;
-  let galleryOffset = 0;
-  let galleryPaused = false;
-
-  // Sections that should map to the "About" menu link
-  const aboutAliases = new Set(['education-training', 'experience']);
-
-  function readSavedTheme() {
-    try {
-      const savedTheme = window.localStorage.getItem(themeStorageKey);
-      return savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : null;
-    } catch {
-      return null;
-    }
+  // ---------- Mobile menu ----------
+  const burger = $('.burger');
+  const menu = $('.mobile-menu');
+  const burgerPath = $('path', burger);
+  function setMenu(open) {
+    menu.hidden = !open;
+    burger.setAttribute('aria-expanded', String(open));
+    burgerPath.setAttribute('d', open ? 'M6 6l12 12M18 6L6 18' : 'M4 7h16M4 12h16M4 17h16');
   }
+  burger.addEventListener('click', () => setMenu(menu.hidden));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
 
-  function persistTheme(theme) {
-    try {
-      window.localStorage.setItem(themeStorageKey, theme);
-    } catch {
-      // Ignore storage failures in restricted browser contexts.
-    }
-  }
-
-  function applyTheme(theme) {
-    const activeTheme = theme === 'light' ? 'light' : 'dark';
-    const toggleState = themeMeta[activeTheme];
-
-    body.dataset.theme = activeTheme;
-    persistTheme(activeTheme);
-
-    if (siteLogo) {
-      const nextLogo = activeTheme === 'light' ? siteLogo.dataset.lightLogo : siteLogo.dataset.darkLogo;
-      if (nextLogo) siteLogo.src = nextLogo;
-    }
-
-    themeToggles.forEach(button => {
-      const icon = button.querySelector('[data-theme-icon]');
-
-      button.setAttribute('aria-label', toggleState.ariaLabel);
-      if (icon) icon.src = toggleState.toggleIcon;
+  // ---------- Project line ----------
+  const line = $('.line');
+  const stations = PROJECTS.map((p, k) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'station';
+    b.innerHTML = '<span class="station-year"></span><span class="station-dot"></span><span class="station-name"></span>';
+    $('.station-year', b).textContent = p.year;
+    $('.station-name', b).textContent = p.short;
+    b.addEventListener('click', () => showProject(k));
+    line.append(b);
+    return b;
+  });
+  let proj = 0;
+  function showProject(k) {
+    const n = PROJECTS.length;
+    proj = (k + n) % n;
+    const p = PROJECTS[proj];
+    stations.forEach((s, i) => {
+      s.classList.toggle('passed', i <= proj);
+      s.classList.toggle('current', i === proj);
     });
+    $('.line-fill').style.width = `${(proj / (n - 1)) * 88.889}%`;
+    $('.proj-period').textContent = p.period;
+    $('.proj-org').textContent = p.org;
+    $('.proj-title').textContent = p.title;
+    $('.proj-desc').textContent = p.desc;
+    $('.proj-tags').replaceChildren(...p.tags.map(t => Object.assign(document.createElement('span'), { textContent: t })));
+    const link = $('.proj-link');
+    link.hidden = !p.link;
+    if (p.link) { link.href = p.link; link.textContent = `${p.linkLabel} ↗`; }
+    $('.proj-metric').textContent = p.metric;
+    $('.proj-metric-label').textContent = p.metricLabel;
+    $('.proj-count').textContent = `${pad2(proj + 1)} / ${pad2(n)}`;
   }
+  $('.proj-prev').addEventListener('click', () => showProject(proj - 1));
+  $('.proj-next').addEventListener('click', () => showProject(proj + 1));
+  showProject(0);
 
-  function toggleTheme() {
-    const nextTheme = body.dataset.theme === 'light' ? 'dark' : 'light';
-    applyTheme(nextTheme);
-  }
+  // ---------- Gallery strips + lightbox ----------
+  const photos = Array.isArray(window.__GALLERY_IMAGES) ? window.__GALLERY_IMAGES : [];
+  const strips = $('.strips');
+  const lightbox = $('.lightbox');
+  const lbImg = $('img', lightbox);
+  let lb = -1;
+  let galleryRows = -1;
 
-  function clearActiveNav() {
-    desktopNavLinks.forEach(a => a.classList.remove('active'));
-    mobileMenuLinks.forEach(a => a.classList.remove('active'));
-  }
-
-  function setActiveNavFor(sectionId) {
-    clearActiveNav();
-    // per your request: when on gallery, none of the main links are active
-    if (sectionId === 'gallery') return;
-
-    const menuTarget = aboutAliases.has(sectionId) ? 'about' : sectionId;
-    const desktopSelector = `.nav-links a[href="#${menuTarget}"]`;
-    const mobileSelector  = `.mobile-menu a[href="#${menuTarget}"]`;
-
-    const desktopLink = document.querySelector(desktopSelector);
-    if (desktopLink) desktopLink.classList.add('active');
-
-    const mobileLink = document.querySelector(mobileSelector);
-    if (mobileLink) mobileLink.classList.add('active');
-  }
-
-  function prettyLabel(id) {
-    return id.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-  }
-
-  function updateNextButton(currentId) {
-    if (!nextAnchor) return;
-    const idx = sections.indexOf(currentId);
-    if (idx === -1 || idx === sections.length - 1) {
-      // last section (gallery) -> hide next
-      nextAnchor.style.display = 'none';
-      return;
-    }
-    const nextId = sections[idx + 1];
-    nextAnchor.style.display = 'inline-flex';
-    nextAnchor.setAttribute('href', `#${nextId}`);
-    if (nextLabel) nextLabel.textContent = sectionLabels.get(nextId) || prettyLabel(nextId);
-  }
-
-  function uniqueUrls(urls) {
-    return [...new Set(urls)].sort((left, right) => left.localeCompare(right));
-  }
-
-  function loadInlineGalleryImages() {
-    if (!Array.isArray(window.__GALLERY_IMAGES)) return [];
-
-    return window.__GALLERY_IMAGES
-      .filter(item => typeof item === 'string' && galleryPattern.test(item))
-      .map(item => new URL(item, window.location.href).href);
-  }
-
-  async function loadManifestGalleryImages() {
-    try {
-      const response = await fetch('images/Gallery/gallery-manifest.json', { cache: 'no-store' });
-      if (!response.ok) return [];
-      const items = await response.json();
-      return Array.isArray(items)
-        ? items
-            .filter(item => typeof item === 'string' && galleryPattern.test(item))
-            .map(item => new URL(item, window.location.href).href)
-        : [];
-    } catch {
-      return [];
+  function buildGallery() {
+    const rows = innerWidth < 700 || photos.length < 9 ? 2 : 3;
+    if (rows === galleryRows) return;
+    galleryRows = rows;
+    const widths = [300, 220, 360, 260, 200, 320, 240, 280];
+    strips.replaceChildren();
+    for (let r = 0; r < rows; r++) {
+      const items = photos.map((src, k) => ({ src, k })).filter(p => p.k % rows === r);
+      const mask = document.createElement('div');
+      mask.className = 'strip-mask';
+      const strip = document.createElement('div');
+      strip.className = 'strip';
+      strip.style.animation = `${r % 2 ? 'stripR' : 'stripL'} ${Math.max(70, items.length * 16)}s linear infinite`;
+      // Each row is doubled so the -50% loop is seamless; the copy is hidden from assistive tech.
+      items.concat(items).forEach((p, j) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'photo';
+        b.style.width = widths[(p.k + r * 3) % widths.length] + 'px';
+        b.setAttribute('aria-label', `Open photo ${p.k + 1}`);
+        if (j >= items.length) { b.tabIndex = -1; b.setAttribute('aria-hidden', 'true'); }
+        const img = document.createElement('img');
+        img.src = p.src; img.alt = ''; img.loading = 'lazy'; img.draggable = false;
+        b.append(img);
+        b.addEventListener('click', () => openLb(p.k));
+        strip.append(b);
+      });
+      mask.append(strip);
+      strips.append(mask);
     }
   }
+  const stripBtn = $('.strip-toggle');
+  stripBtn.addEventListener('click', () => {
+    const paused = strips.classList.toggle('paused');
+    stripBtn.textContent = paused ? '▶' : '❚❚';
+  });
 
-  async function loadDirectoryGalleryImages() {
-    try {
-      const directoryUrl = new URL('images/Gallery/', window.location.href);
-      const response = await fetch(directoryUrl, { cache: 'no-store' });
-      if (!response.ok) return [];
-      const markup = await response.text();
-      if (!markup.includes('<a')) return [];
-
-      const doc = new DOMParser().parseFromString(markup, 'text/html');
-      const imageUrls = Array.from(doc.querySelectorAll('a[href]'))
-        .map(link => link.getAttribute('href'))
-        .filter(Boolean)
-        .map(href => new URL(href, directoryUrl).href)
-        .filter(url => url.startsWith(directoryUrl.href) && galleryPattern.test(url));
-
-      return imageUrls;
-    } catch {
-      return [];
-    }
+  function openLb(k) {
+    const n = photos.length;
+    lb = (k + n) % n;
+    lbImg.src = photos[lb];
+    $('.lb-label', lightbox).textContent = `${pad2(lb + 1)} / ${pad2(n)}`;
+    lightbox.hidden = false;
   }
+  function closeLb() { lb = -1; lightbox.hidden = true; }
+  lightbox.addEventListener('click', closeLb);
+  $('.lb-prev').addEventListener('click', (e) => { e.stopPropagation(); openLb(lb - 1); });
+  $('.lb-next').addEventListener('click', (e) => { e.stopPropagation(); openLb(lb + 1); });
+  addEventListener('keydown', (e) => {
+    if (lb < 0) return;
+    if (e.key === 'Escape') closeLb();
+    if (e.key === 'ArrowRight') openLb(lb + 1);
+    if (e.key === 'ArrowLeft') openLb(lb - 1);
+  });
+  buildGallery();
 
-  function buildGallerySet(imageUrls) {
-    const set = document.createElement('div');
-    set.className = 'gallery-set';
-    const marqueeWidth = galleryMarquee?.clientWidth || window.innerWidth || 0;
-    const columnCount = Math.min(
-      imageUrls.length,
-      Math.max(3, Math.ceil(marqueeWidth / 220) + 1)
-    );
+  // ---------- Scroll train ----------
+  // A track runs down the right edge from the hero to the contact row; a three-car
+  // train follows the scroll position and lights up a station at each section.
+  const NS = 'http://www.w3.org/2000/svg';
+  const mk = (t, a) => { const el = document.createElementNS(NS, t); for (const k in a) el.setAttribute(k, a[k]); return el; };
+  const SK = 'stroke:var(--sk)';
+  let trackHost = null;
+  let trk = null;
+  let raf = 0;
 
-    const columns = Array.from({ length: columnCount }, () => {
-      const column = document.createElement('div');
-      column.className = 'gallery-column';
-      set.appendChild(column);
-      return column;
+  function buildTrack() {
+    // offsetHeight, not scrollHeight: scrollHeight includes the track layer itself,
+    // so the page could never shrink back once it had grown (e.g. after closing <details>).
+    const W = site.clientWidth, H = site.offsetHeight;
+    if (!W || !H) return;
+    if (!trackHost) {
+      trackHost = document.createElement('div');
+      trackHost.style.cssText = 'position:absolute;left:0;top:0;width:100%;pointer-events:none;z-index:5';
+      trackHost.setAttribute('aria-hidden', 'true');
+      site.append(trackHost);
+    }
+    trackHost.style.height = H + 'px';
+    const secs = [...site.querySelectorAll(':scope > section')];
+    if (secs.length < 3) return;
+
+    const xR = W < 760 ? W - 12 : W - Math.max(14, ((W - 1200) / 2) * 0.42);
+    const rTop = site.getBoundingClientRect().top, row = site.querySelector('[data-track-row]');
+    let yRow = H - 200, xEnd = xR - 200;
+    if (row && W < 760) {
+      // On phones the buttons wrap, so turn left just below them and stop near the left edge,
+      // well clear of the footer.
+      const rr = row.getBoundingClientRect();
+      yRow = (rr.bottom - rTop) + 32;
+      xEnd = rr.left - site.getBoundingClientRect().left + 24;
+    } else if (row) {
+      const last = row.lastElementChild.getBoundingClientRect(), rr = row.getBoundingClientRect();
+      yRow = (rr.bottom - rTop) - last.height / 2;
+      xEnd = last.right + 40;
+    }
+    if (xEnd > xR - 80) xEnd = xR - 80;
+    const y0 = secs[0].offsetHeight + 8, rad = 48;
+    const d = `M${xR} ${y0} L${xR} ${yRow - rad} Q${xR} ${yRow} ${xR - rad} ${yRow} L${xEnd} ${yRow}`;
+    const st = secs.slice(1).map(s => [xR, s.offsetTop]);
+
+    trackHost.innerHTML = '';
+    const svg = mk('svg', { width: W, height: H, style: 'position:absolute;left:0;top:0;overflow:visible' });
+    svg.append(mk('path', { d, fill: 'none', style: SK, 'stroke-width': 20, 'stroke-dasharray': '2 7', opacity: .16 }));
+    [-5, 5].forEach(o => svg.append(mk('path', { d, transform: `translate(${o} 0)`, fill: 'none', style: SK, 'stroke-width': 1.2, opacity: .32 })));
+    const prog = mk('path', { d, fill: 'none', stroke: ACCENT, 'stroke-width': 2, 'stroke-linecap': 'round', opacity: .9 });
+    svg.append(prog);
+    const dots = st.map(([sx, sy]) => {
+      const c = mk('circle', { cx: sx, cy: sy, r: 5, style: 'fill:var(--bg);stroke:var(--sk);transition:fill .3s', 'stroke-width': 1.5 });
+      svg.append(c);
+      return c;
     });
 
-    imageUrls.forEach((src, index) => {
-      const figure = document.createElement('figure');
-      figure.className = 'gallery-card';
-
-      const image = document.createElement('img');
-      image.src = src;
-      image.alt = `Gallery highlight ${String(index + 1).padStart(2, '0')}`;
-      image.loading = 'eager';
-      image.decoding = 'async';
-
-      figure.appendChild(image);
-      columns[index % columns.length].appendChild(figure);
-    });
-
-    return set;
-  }
-
-  function getGalleryColumns() {
-    const gallerySet = galleryTrack?.querySelector('.gallery-set');
-    if (!gallerySet) return [];
-
-    return Array.from(gallerySet.children).filter(node => node instanceof HTMLElement);
-  }
-
-  function applyGalleryOffset() {
-    if (!galleryTrack) return;
-    galleryTrack.style.transform = `translate3d(${-galleryOffset}px, 0, 0)`;
-  }
-
-  function getGallerySpeed() {
-    if (!galleryTrack) return 0;
-    const cycleWidth = galleryTrack.scrollWidth;
-    return cycleWidth > 0 ? cycleWidth / 48 : 18;
-  }
-
-  function recycleGalleryColumns() {
-    const gallerySet = galleryTrack?.querySelector('.gallery-set');
-    if (!gallerySet) return;
-
-    const gap = parseFloat(window.getComputedStyle(gallerySet).gap) || 0;
-    const columns = getGalleryColumns();
-    let firstColumn = columns[0];
-
-    while (firstColumn) {
-      const moveDistance = firstColumn.getBoundingClientRect().width + gap;
-      if (galleryOffset < moveDistance) break;
-
-      gallerySet.appendChild(firstColumn);
-      galleryOffset -= moveDistance;
-      firstColumn = getGalleryColumns()[0];
-    }
-
-    applyGalleryOffset();
-  }
-
-  function stopGalleryLoop() {
-    if (!galleryAnimationFrame) return;
-    window.cancelAnimationFrame(galleryAnimationFrame);
-    galleryAnimationFrame = 0;
-  }
-
-  function runGalleryLoop(timestamp) {
-    if (!galleryTrack) return;
-
-    if (!galleryLastTimestamp) {
-      galleryLastTimestamp = timestamp;
-    }
-
-    const deltaSeconds = (timestamp - galleryLastTimestamp) / 1000;
-    galleryLastTimestamp = timestamp;
-
-    if (!galleryPaused && !reducedMotionQuery.matches) {
-      galleryOffset += getGallerySpeed() * deltaSeconds;
-      recycleGalleryColumns();
-    }
-
-    galleryAnimationFrame = window.requestAnimationFrame(runGalleryLoop);
-  }
-
-  function startGalleryLoop() {
-    if (!galleryTrack || reducedMotionQuery.matches) return;
-    stopGalleryLoop();
-    galleryLastTimestamp = 0;
-    galleryAnimationFrame = window.requestAnimationFrame(runGalleryLoop);
-  }
-
-  function syncGalleryOnResize() {
-    recycleGalleryColumns();
-  }
-
-  function syncGalleryMotionPreference() {
-    if (reducedMotionQuery.matches) {
-      stopGalleryLoop();
-      galleryOffset = 0;
-      applyGalleryOffset();
-      return;
-    }
-
-    startGalleryLoop();
-  }
-
-  async function initGallery() {
-    if (!galleryTrack) return;
-
-    const imageUrls = uniqueUrls([
-      ...loadInlineGalleryImages(),
-      ...(await loadDirectoryGalleryImages()),
-      ...(await loadManifestGalleryImages())
-    ]);
-
-    if (!imageUrls.length) {
-      galleryTrack.parentElement?.setAttribute('hidden', 'hidden');
-      return;
-    }
-
-    galleryTrack.parentElement?.removeAttribute('hidden');
-    galleryTrack.replaceChildren(buildGallerySet(imageUrls));
-
-    const images = Array.from(galleryTrack.querySelectorAll('img'));
-    let pending = images.length;
-
-    if (!pending) {
-      galleryOffset = 0;
-      applyGalleryOffset();
-      startGalleryLoop();
-      return;
-    }
-
-    const onAssetReady = () => {
-      pending -= 1;
-      if (pending <= 0) {
-        galleryOffset = 0;
-        applyGalleryOffset();
-        startGalleryLoop();
+    const car = (kind) => {
+      const g = mk('g', {}), inner = mk('g', kind === 'tail' ? { transform: 'scale(-1 1)' } : {});
+      g.append(inner);
+      const add = (t, a) => inner.append(mk(t, a));
+      const body = kind === 'mid' ? 'M-24 -7 H24 V7 H-24 Z' : 'M-24 -7 H8 Q23 -7 25 0 Q23 7 8 7 H-24 Z';
+      add('path', { d: body, style: 'fill:var(--bg);' + SK, 'stroke-width': 1.4, 'stroke-linejoin': 'round' });
+      add('path', { d: kind === 'mid' ? 'M-22 -4.5 H22 M-22 4.5 H22' : 'M-22 -4.5 H8 M-22 4.5 H8', fill: 'none', style: SK, 'stroke-width': .7, opacity: .7 });
+      if (kind === 'mid') {
+        add('path', { d: 'M-6 0 L0 -4 L6 0 L0 4 Z M-6 0 H6', fill: 'none', style: SK, 'stroke-width': .9 });
+        add('rect', { x: -19, y: -2, width: 7, height: 4, rx: 1, fill: 'none', style: SK, 'stroke-width': .8 });
+        add('rect', { x: 12, y: -2, width: 7, height: 4, rx: 1, fill: 'none', style: SK, 'stroke-width': .8 });
+      } else {
+        add('path', { d: 'M12 -5.6 Q20 -4.5 21.6 0 Q20 4.5 12 5.6 Z', fill: ACCENT, opacity: .85, style: SK, 'stroke-width': .8 });
+        add('rect', { x: -18, y: -2, width: 8, height: 4, rx: 1, fill: 'none', style: SK, 'stroke-width': .8 });
+        add('rect', { x: -6, y: -2, width: 8, height: 4, rx: 1, fill: 'none', style: SK, 'stroke-width': .8 });
+        add('circle', { cx: 23.5, cy: -3, r: 1, fill: '#fff6d8' });
+        add('circle', { cx: 23.5, cy: 3, r: 1, fill: '#fff6d8' });
       }
+      add('rect', { x: -27, y: -4, width: 3, height: 8, style: 'fill:var(--bg);' + SK, 'stroke-width': 1 });
+      svg.append(g);
+      return g;
     };
+    const cars = [car('head'), car('mid'), car('tail')];
+    trackHost.append(svg);
 
-    images.forEach(image => {
-      if (image.complete) {
-        onAssetReady();
-        return;
-      }
-
-      image.addEventListener('load', onAssetReady, { once: true });
-      image.addEventListener('error', onAssetReady, { once: true });
-    });
-
-    galleryMarquee?.addEventListener('pointerenter', () => {
-      galleryPaused = true;
-    });
-
-    galleryMarquee?.addEventListener('pointerleave', () => {
-      galleryPaused = false;
-    });
-
-    window.addEventListener('resize', syncGalleryOnResize);
-    reducedMotionQuery.addEventListener('change', syncGalleryMotionPreference);
-  }
-
-  // IntersectionObserver to detect which section is visible inside the scroll container
-  const obsOptions = {
-    root: (container === document.documentElement ? null : container),
-    threshold: [0.25, 0.5, 0.75]
-  };
-
-  let lastSeen = null;
-  const observer = new IntersectionObserver((entries) => {
-    // pick the entry with largest intersectionRatio among visible entries
-    const visible = entries.filter(e => e.isIntersecting);
-    if (visible.length === 0) return;
-    visible.sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-    const chosen = visible[0];
-    const id = chosen.target.id;
-    if (id && id !== lastSeen) {
-      lastSeen = id;
-      setActiveNavFor(id);
-      updateNextButton(id);
+    // Sample the path so scroll position can be mapped to a distance along it.
+    const len = prog.getTotalLength(), ys = [], step = 6;
+    let lc = -1;
+    for (let l = 0; l <= len; l += step) {
+      const p = prog.getPointAtLength(l);
+      if (lc < 0 && p.y >= yRow - 0.5) lc = l;
+      ys.push(lc < 0 ? p.y : yRow + (l - lc));
     }
-  }, obsOptions);
-
-  sectionEls.forEach(el => observer.observe(el));
-
-  // Smooth scroll for all internal anchors (desktop nav, mobile nav, next button)
-  internalLinks.forEach(a => {
-    const href = a.getAttribute('href');
-    if (!href || !href.startsWith('#')) return;
-    a.addEventListener('click', (e) => {
-      const targetId = href.slice(1);
-      const targetEl = document.getElementById(targetId);
-      if (targetEl) {
-        e.preventDefault();
-        // scrollIntoView handles scrolling the container (if container is the scroller)
-        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-        // close mobile menu if open
-        const mobileMenu = document.querySelector('.mobile-menu');
-        if (mobileMenu && mobileMenu.style.display === 'flex') mobileMenu.style.display = 'none';
-      }
-    });
-  });
-
-  // Mobile menu toggle (hamburger + close button)
-  const hamburger = document.querySelector('.hamburger');
-  const mobileMenu = document.querySelector('.mobile-menu');
-  const closeBtn = document.querySelector('.mobile-menu .close-btn');
-
-  if (hamburger && mobileMenu) {
-    hamburger.addEventListener('click', () => {
-      mobileMenu.style.display = 'flex';
-    });
-  }
-  if (closeBtn && mobileMenu) {
-    closeBtn.addEventListener('click', () => {
-      mobileMenu.style.display = 'none';
-    });
+    svg.append(mk('path', { d: `M${xEnd} ${yRow - 11} V${yRow + 11} M${xEnd - 5} ${yRow - 11} V${yRow + 11}`, fill: 'none', style: SK, 'stroke-width': 2.4, 'stroke-linecap': 'round' }));
+    prog.setAttribute('stroke-dasharray', `${len} ${len}`);
+    const stL = st.map(([, sy]) => { let i = 0; while (i < ys.length - 1 && ys[i] < sy) i++; return i * step; });
+    trk = { prog, cars, dots, len, ys, step, stL, cur: trk ? trk.cur : 0, goal: 0, top: rTop + scrollY };
+    trackTick(true);
   }
 
-  themeToggles.forEach(button => {
-    button.addEventListener('click', toggleTheme);
-  });
-
-  applyTheme(readSavedTheme() || body.dataset.theme || 'dark');
-
-  // initial state: pick the section roughly in view or default to first
-  if (sections.length) {
-    let initial = sections[0];
-    sectionEls.forEach(el => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top <= (window.innerHeight / 2) && rect.bottom >= (window.innerHeight / 2)) {
-        initial = el.id;
-      }
-    });
-    setActiveNavFor(initial);
-    updateNextButton(initial);
+  function trackTick(force) {
+    const t = trk;
+    if (!t) return;
+    const maxS = Math.max(1, root.scrollHeight - innerHeight), vEnd = t.ys[t.ys.length - 1];
+    let target = scrollY + innerHeight * .62 - t.top;
+    // Near the bottom, stretch the remaining scroll so the train still reaches the buffer stop.
+    const tail = Math.max(0, scrollY - (maxS - innerHeight)) / innerHeight;
+    const need = vEnd - (maxS + innerHeight * .62 - t.top);
+    if (need > 0) target += Math.min(1, tail) * need;
+    let lo = 0, hi = t.ys.length - 1;
+    while (lo < hi) { const m = (lo + hi) >> 1; if (t.ys[m] < target) lo = m + 1; else hi = m; }
+    t.goal = Math.min(t.len - 26, Math.max(104, lo * t.step));
+    if (force) t.cur = t.goal;
+    if (!raf) raf = requestAnimationFrame(loop);
   }
 
-  initGallery();
+  function loop() {
+    raf = 0;
+    const t = trk;
+    if (!t) return;
+    t.cur += (t.goal - t.cur) * .14;
+    if (Math.abs(t.goal - t.cur) < .3) t.cur = t.goal;
+    t.prog.setAttribute('stroke-dashoffset', t.len - t.cur);
+    t.cars.forEach((g, i) => {
+      const L = Math.max(0, t.cur - i * 51);
+      const p = t.prog.getPointAtLength(L), q = t.prog.getPointAtLength(Math.min(t.len, L + 2)), o = t.prog.getPointAtLength(Math.max(0, L - 2));
+      g.setAttribute('transform', `translate(${p.x} ${p.y}) rotate(${Math.atan2(q.y - o.y, q.x - o.x) * 180 / Math.PI})`);
+    });
+    t.dots.forEach((c, i) => { c.style.fill = t.cur >= t.stL[i] - 2 ? ACCENT : 'var(--bg)'; });
+    if (t.cur !== t.goal) raf = requestAnimationFrame(loop);
+  }
+
+  // ---------- Parallax + layout tracking ----------
+  addEventListener('scroll', () => { root.style.setProperty('--sy', Math.min(scrollY, 900)); trackTick(); }, { passive: true });
+  addEventListener('pointermove', (e) => root.style.setProperty('--mx', ((e.clientX / innerWidth) - .5).toFixed(3)));
+
+  // Rebuild the track whenever the page size changes (resize, fonts, lazy images, <details>).
+  let lastSig = '', rt = 0;
+  const remeasure = () => {
+    const sig = site.clientWidth + 'x' + site.offsetHeight;
+    if (sig === lastSig) return;
+    lastSig = sig;
+    buildGallery();
+    buildTrack();
+  };
+  new ResizeObserver(() => { clearTimeout(rt); rt = setTimeout(remeasure, 120); }).observe(site);
+  remeasure();
 });
